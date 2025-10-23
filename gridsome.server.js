@@ -4,10 +4,23 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+const fs = require('fs');
+const yaml = require('js-yaml');
+
+let configData = null
+// 读取配置文件
+try {
+  const fileContents = fs.readFileSync('./config.yaml', 'utf8');
+  configData = yaml.load(fileContents); // 解析 YAML
+} catch (e) {
+  console.error('读取配置文件出错:', e);
+}
 
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+  api.loadSource(async store => {
+    Object.keys(configData).forEach(key=>{
+      store.addMetadata(key, configData[key])
+    })
   })
 
   api.createPages(({ createPage }) => {
