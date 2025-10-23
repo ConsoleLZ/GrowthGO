@@ -1,7 +1,13 @@
 # 正在开发中......
 
-## GrowthGO
-一个帮助你快速开发导航网站的项目，如果你需要记录自己在开发过程中或者学习的时候遇到的一些好的项目或者网站，那么可以尝试使用GrowthGO构建自己的个人导航网站
+<p align="center">
+  <br>
+  <img src="https://github.com/ConsoleLZ/GrowthGO/blob/main/src/assets/images/logo.png?raw=true" width="90"/>
+</p>
+
+<h1 align="center">GrowthGO</h1>
+<h3 align="center">一个帮助你快速开发导航网站的项目，如果你需要记录自己在开发过程中或者学习的时候遇到的一些好的项目或者网站，那么可以尝试使用GrowthGO构建自己的个人导航网站</h3>
+
 
 ## 感谢
 1. [Gridsome](https://github.com/gridsome/gridsome)
