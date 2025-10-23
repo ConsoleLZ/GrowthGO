@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-      <div>首页</div>
-      <div>推荐</div>
-      <div>分类</div>
-      <div>统计</div>
+    <div>首页</div>
+    <div>推荐</div>
+    <div>分类</div>
+    <div>统计</div>
   </div>
 </template>
 
@@ -16,10 +16,22 @@ query {
 </static-query>
 
 <style scoped>
+.header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: default;
+}
+</style>
+
+<style>
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 </style>
