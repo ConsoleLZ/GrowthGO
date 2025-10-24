@@ -1,9 +1,12 @@
 <template>
-  <div class="header">
-    <div class="item">首页</div>
-    <div class="item">推荐</div>
-    <div class="item">分类</div>
-    <div class="item">统计</div>
+  <div>
+    <div class="header">
+      <div class="item">首页</div>
+      <div class="item">推荐</div>
+      <div class="item">分类</div>
+      <div class="item">统计</div>
+    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -18,7 +21,7 @@ query {
 <style scoped>
 .header {
   width: 100%;
-  height: 50px;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,13 +44,13 @@ query {
 
 /* 下划线动画 - 核心部分 */
 .header > .item::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   bottom: 10px;
   width: 0;
   height: 2px;
-  background-color: #238DF7;
+  background-color: #238df7;
   /* 从中心展开 */
   transform: translateX(-50%);
   transition: width 0.3s ease;
@@ -55,7 +58,7 @@ query {
 }
 
 .header > .item:hover {
-  color: #238DF7;
+  color: #238df7;
 }
 
 .header > .item:hover::after {
@@ -67,6 +70,6 @@ query {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 </style>
