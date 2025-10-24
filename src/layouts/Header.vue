@@ -10,14 +10,6 @@
   </div>
 </template>
 
-<static-query>
-query {
-  metadata {
-    title
-  }
-}
-</static-query>
-
 <style scoped>
 .header {
   width: 100%;
