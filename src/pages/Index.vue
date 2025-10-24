@@ -28,7 +28,12 @@ export default {
 <style scoped>
 .site-info {
   width: 100%;
-  height: 25rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 70px;
 }
 .avatar {
   --size: 10rem;
@@ -36,5 +41,15 @@ export default {
   height: var(--size);
   border-radius: var(--size);
   background-color: #000000;
+}
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.sub-title {
+  font-size: 14px;
+  text-align: center;
+  margin: 0 20px;
 }
 </style>
