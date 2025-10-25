@@ -16,10 +16,16 @@ try {
   console.error('读取配置文件出错:', e);
 }
 
+console.log(configData)
+
 module.exports = function (api) {
   api.loadSource(async store => {
-    Object.keys(configData).forEach(key=>{
-      store.addMetadata(key, configData[key])
+    Object.keys(configData).forEach(key => {
+      if (Array.isArray(configData[key])) {
+        store.addMetadata(key, JSON.stringify(configData[key]))
+      } else {
+        store.addMetadata(key, configData[key])
+      }
     })
   })
 

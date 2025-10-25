@@ -6,3 +6,5 @@ avatar: '/logo.png'
 marquee:
   - img: https://gridsome.org/assets/static/favicon.ac8d93a.c6d52b979318cc0b0524324281174df2.png
     link: https://github.com/gridsome
+  - img: https://vue-marquee.com/_nuxt/img/logo.ea078f3.png
+    link: https://github.com/SchnapsterDog/vue-marquee-slider
