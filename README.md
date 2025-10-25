@@ -13,7 +13,13 @@
 2. python: 3.11.0
 3. [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
-后面两个不装在npm i的时候会报错
+Visual Studio在安装的时候选择C++即可，确保包含以下组件：
+
+1. MSVC C++ 编译器
+2. Windows SDK
+3. CMake 工具（可选）
+
+> 注意：后面两个不装在npm i的时候会报错
 
 ## 项目启动
 1. 安装依赖
