@@ -1,3 +1,8 @@
 title: GrowthGO   #网站标题
 subTitle: 快速搭建专属于自己的导航网站，首屏加载速度快，SEO友好，UI美观、简洁
 avatar: '/logo.png'
+
+# 跑马灯
+marquee:
+  - img: https://gridsome.org/assets/static/favicon.ac8d93a.c6d52b979318cc0b0524324281174df2.png
+    link: https://github.com/gridsome

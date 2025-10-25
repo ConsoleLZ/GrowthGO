@@ -9547,6 +9547,11 @@ vue-loader@^15.7.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-marquee-slider@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/vue-marquee-slider/-/vue-marquee-slider-1.0.6.tgz"
+  integrity sha512-0ar9QpMtx8M5Zu4ih10b+zeHaLXxjv3qztjgM2LtG5gnfeo+HnBeDED7HqmAZba0qup5chdIcVtDW4kVGgAa1g==
+
 vue-meta@^2.2.2:
   version "2.4.0"
   resolved "https://registry.npmmirror.com/vue-meta/-/vue-meta-2.4.0.tgz"
@@ -9594,7 +9599,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@*, "vue@^2 || ^3.0.0-0", vue@^2.6.10:
+vue@*, "vue@^2 || ^3.0.0-0", vue@^2.6.10, vue@^2.6.12:
   version "2.7.16"
   resolved "https://registry.npmmirror.com/vue/-/vue-2.7.16.tgz"
   integrity sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==
