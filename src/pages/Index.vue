@@ -40,7 +40,10 @@ export default {
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);
-  background-color: #000000;
+  background-repeat: no-repeat;
+  background-image: url('/logo.png');
+  background-size: 80%;
+  background-position: center center;
 }
 .title {
   font-weight: 700;
