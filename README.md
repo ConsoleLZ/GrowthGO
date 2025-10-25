@@ -37,4 +37,3 @@ npm run dev
 
 ## 感谢
 1. [Gridsome](https://github.com/gridsome/gridsome)
-2. [vue-marquee-slider](https://github.com/SchnapsterDog/vue-marquee-slider)

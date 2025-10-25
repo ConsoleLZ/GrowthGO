@@ -5,9 +5,6 @@
       <div class="title">{{ $static.metadata.title }}</div>
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
-    <vue-marquee-slider id="marquee-slider" :speed="8000" :width="48" :space="80">
-      <a v-for="item in JSON.parse($static.metadata.marquee)" :href="item.link" target="_blank"><img width="100%" style="cursor: pointer;" :src="item.img" /></a>
-    </vue-marquee-slider>
   </Header>
 </template>
 
@@ -16,8 +13,7 @@ query {
   metadata {
     title,
     subTitle,
-    avatar,
-    marquee
+    avatar
   }
 }
 </static-query>
