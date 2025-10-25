@@ -25,7 +25,7 @@
   position: relative;
 }
 
-.header > .item {
+.header>.item {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
@@ -35,7 +35,7 @@
 }
 
 /* 下划线动画 - 核心部分 */
-.header > .item::after {
+.header>.item::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -49,11 +49,11 @@
   border-radius: 1px;
 }
 
-.header > .item:hover {
+.header>.item:hover {
   color: #238df7;
 }
 
-.header > .item:hover::after {
+.header>.item:hover::after {
   width: 80%;
 }
 </style>
@@ -63,5 +63,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+a {
+  /* 移除下划线 */
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  font-size: 12px;
+  color: #000000;
 }
 </style>

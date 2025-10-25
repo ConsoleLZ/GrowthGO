@@ -5,6 +5,10 @@
       <div class="title">{{ $static.metadata.title }}</div>
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
+    <div class="footer">
+      <a href="">友情链接1</a>
+      <a href="">友情链接2</a>
+    </div>
   </Header>
 </template>
 
@@ -57,5 +61,15 @@ export default {
   font-size: 14px;
   text-align: center;
   margin: 0 20px;
+}
+
+.footer {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 </style>
