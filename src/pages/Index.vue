@@ -6,8 +6,8 @@
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
     <div class="footer">
-      <a href="">友情链接1</a>
-      <a href="">友情链接2</a>
+      <a :href="item.url" target="_blank" v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
+        :key="index">{{ item.name }}</a>
     </div>
   </Header>
 </template>
@@ -17,7 +17,8 @@ query {
   metadata {
     title,
     subTitle,
-    avatar
+    avatar,
+    friendLink
   }
 }
 </static-query>

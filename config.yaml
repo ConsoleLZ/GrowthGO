@@ -1,3 +1,9 @@
 title: GrowthGO   #网站标题
 subTitle: 快速搭建专属于自己的导航网站，首屏加载速度快，SEO友好，UI美观、简洁
 avatar: '/logo.png'
+
+friendLink:
+  - name: Gridsome
+    url: https://gridsome.org/
+  - name: 我的博客
+    url: https://consolelz.github.io/
