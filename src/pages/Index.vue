@@ -1,7 +1,7 @@
 <template>
   <Header>
     <div class="site-info">
-      <div class="avatar"></div>
+      <div class="avatar" :style="'background-image: url(' + $static.metadata.avatar + ')'"></div>
       <div class="title">{{ $static.metadata.title }}</div>
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
@@ -12,7 +12,8 @@
 query {
   metadata {
     title,
-    subTitle
+    subTitle,
+    avatar
   }
 }
 </static-query>
@@ -41,7 +42,6 @@ export default {
   height: var(--size);
   border-radius: var(--size);
   background-repeat: no-repeat;
-  background-image: url('/logo.png');
   background-size: 80%;
   background-position: center center;
 }
