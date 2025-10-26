@@ -29,7 +29,6 @@
 
 .header>.item {
   text-decoration: none;
-  color: #333;
   transition: color 0.3s ease;
   position: relative;
   padding: 15px 0;
@@ -70,7 +69,7 @@
 
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  background-image: linear-gradient(-60deg, #1a1a2e 50%, #0f1626 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -91,10 +90,11 @@
 </style>
 
 <style>
-body {
+html,body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
 }
 
 a {

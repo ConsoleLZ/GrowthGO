@@ -121,6 +121,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center center;
+  background-color: #ffffff;
 }
 
 .title {
@@ -146,7 +147,6 @@ export default {
   font-size: 20px;
   font-weight: 600;
   margin: 40px 0 20px 0;
-  color: #333;
   text-align: center;
 }
 
@@ -191,13 +191,12 @@ export default {
   margin: 0 0 5px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #333;
 }
 
 .card-content p {
   margin: 0;
   font-size: 12px;
-  color: #666;
+  color: #cccccc;
   line-height: 1.4;
 }
 
@@ -214,7 +213,7 @@ export default {
 
 .friend-link {
   font-size: 12px;
-  color: #666;
+  color: #cccccc;
   transition: all 0.3s ease;
   padding: 5px 10px;
   border-radius: 4px;
@@ -222,7 +221,6 @@ export default {
 
 .friend-link:hover {
   color: #238df7;
-  background: #f8f9fa;
 }
 
 /* 移除原来的footer样式 */
