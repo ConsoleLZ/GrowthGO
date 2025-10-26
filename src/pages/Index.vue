@@ -91,10 +91,7 @@ export default {
           icon: "💬",
           url: "https://stackoverflow.com"
         }
-      ],
-
-      // 最近访问标签
-      recentTags: ["JavaScript", "Vue", "React", "CSS", "Node.js", "Python", "Git", "Docker"]
+      ]
     }
   },
   methods: {
