@@ -21,6 +21,7 @@
         </div>
       </div>
     </div>
+    <div class="show-more">查看更多<span>→</span></div>
 
     <div class="friend-links">
       <a :href="item.url" target="_blank" v-for="(item, index) in JSON.parse($static.metadata.friendLink)" :key="index"
@@ -198,5 +199,24 @@ export default {
   .friend-link {
     font-size: 11px;
   }
+}
+
+.show-more {
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 左右移动动画 */
+@keyframes left-right-move {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.show-more > span {
+  margin-left: 6px;
+  display: inline-block;
+  animation: left-right-move 1.2s ease-in-out infinite;
 }
 </style>
