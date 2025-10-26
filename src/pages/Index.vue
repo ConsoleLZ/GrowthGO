@@ -159,7 +159,7 @@ export default {
 }
 
 .nav-card {
-  background: white;
+  /* background: white; */
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -168,13 +168,11 @@ export default {
   display: flex;
   align-items: center;
   gap: 15px;
-  border: 1px solid #f0f0f0;
 }
 
 .nav-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  border-color: #238df7;
 }
 
 .card-icon {
