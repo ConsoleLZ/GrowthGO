@@ -67,7 +67,7 @@ export default {
 }
 
 .avatar {
-  --size: 10rem;
+  --size: 8rem;
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);

@@ -1,10 +1,22 @@
 <template>
   <div style="position: relative;min-height: 100vh;">
     <div class="header">
-      <div class="item">首页</div>
-      <div class="item">推荐</div>
-      <div class="item">分类</div>
-      <div class="item">统计</div>
+      <div class="item">
+        <img src="../assets/icon/home.svg" width="18px" alt="">
+        <div>首页</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icon/thumbs-up.svg" width="18px" alt="">
+        <div>推荐</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icon/application-two.svg" width="18px" alt="">
+        <div>分类</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icon/chart-pie-one.svg" width="18px" alt="">
+        <div>统计</div>
+      </div>
     </div>
     <div class="bg"></div>
     <div class="bg bg2"></div>
@@ -33,6 +45,10 @@
   position: relative;
   padding: 15px 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
 }
 
 /* 下划线动画 - 核心部分 */
