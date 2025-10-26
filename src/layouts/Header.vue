@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: relative;min-height: 100vh;">
     <div class="header">
       <div class="item">首页</div>
       <div class="item">推荐</div>
