@@ -9,12 +9,12 @@
     <div class="main-content">
       <div class="quick-access">
         <div class="card-grid">
-          <div class="nav-card" v-for="item in quickAccess" :key="item.id" @click="openLink(item.url)">
+          <div class="nav-card" v-for="item in JSON.parse($static.metadata.quickAccess)" :key="item.url" @click="openLink(item.url)">
             <div class="card-icon">
-              <span>{{ item.icon }}</span>
+              <img :src="item.icon" width="36px" alt="">
             </div>
             <div class="card-content">
-              <h3>{{ item.title }}</h3>
+              <h3>{{ item.name }}</h3>
               <p>{{ item.description }}</p>
             </div>
           </div>
@@ -35,7 +35,8 @@ query {
     title,
     subTitle,
     avatar,
-    friendLink
+    friendLink,
+    quickAccess
   }
 }
 </static-query>
@@ -44,55 +45,6 @@ query {
 export default {
   metaInfo: {
     title: "首页",
-  },
-  data() {
-    return {
-      // 快速访问数据
-      quickAccess: [
-        {
-          id: 1,
-          title: "GitHub",
-          description: "代码托管平台",
-          icon: "⚡",
-          url: "https://github.com"
-        },
-        {
-          id: 2,
-          title: "掘金",
-          description: "技术社区",
-          icon: "💎",
-          url: "https://juejin.cn"
-        },
-        {
-          id: 3,
-          title: "MDN",
-          description: "Web技术文档",
-          icon: "📚",
-          url: "https://developer.mozilla.org"
-        },
-        {
-          id: 4,
-          title: "Vue.js",
-          description: "渐进式框架",
-          icon: "🟢",
-          url: "https://vuejs.org"
-        },
-        {
-          id: 5,
-          title: "React",
-          description: "用户界面库",
-          icon: "⚛️",
-          url: "https://reactjs.org"
-        },
-        {
-          id: 6,
-          title: "Stack Overflow",
-          description: "开发者问答",
-          icon: "💬",
-          url: "https://stackoverflow.com"
-        }
-      ]
-    }
   },
   methods: {
     openLink(url) {
