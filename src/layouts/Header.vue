@@ -66,10 +66,6 @@
   border-radius: 1px;
 }
 
-.header>.item:hover {
-  color: #238df7;
-}
-
 .header>.item:hover::after {
   width: 80%;
 }
