@@ -27,5 +27,7 @@ friendLink:
     url: https://gridsome.org/
   - name: IconPark
     url: https://iconpark.oceanengine.com/
-  - name: 我的博客
+  - name: IconFont
+    url: https://www.iconfont.cn/
+  - name: myBlog
     url: https://consolelz.github.io/
