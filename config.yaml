@@ -25,5 +25,7 @@ quickAccess:
 friendLink:
   - name: Gridsome
     url: https://gridsome.org/
+  - name: IconPark
+    url: https://iconpark.oceanengine.com/
   - name: 我的博客
     url: https://consolelz.github.io/
