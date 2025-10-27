@@ -326,6 +326,7 @@ export default {
   padding-inline: 0.5em;
   padding-block: 0.7em;
   border: none;
+  color: #fff;
 }
 /* styling of animated border */
 .search:before {
