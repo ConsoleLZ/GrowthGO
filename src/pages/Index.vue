@@ -106,6 +106,7 @@ export default {
 
 /* 新增内容样式 */
 .main-content {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px 40px 20px;
   margin-top: 8rem;
