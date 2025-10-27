@@ -302,8 +302,8 @@ export default {
   --width-of-input: 36rem;
   --height-of-input: 50px;
   --border-height: 2px;
-  --input-bg: #fff;
-  --border-color: #2f2ee9;
+  --input-bg: #000;
+  --border-color: #fff;
   --border-radius: 30px;
   --after-border-radius: 1px;
   position: relative;
