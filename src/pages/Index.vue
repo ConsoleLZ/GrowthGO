@@ -255,11 +255,6 @@ export default {
   animation: left-right-move 1.2s ease-in-out infinite;
 }
 
-/* From Uiverse.io by satyamchaudharydev */
-/* From uiverse.io by @satyamchaudharydev */
-/* removing default style of button */
-
-/* styling of whole input container */
 .search {
   --timing: 0.3s;
   --width-of-input: 36rem;
@@ -291,7 +286,7 @@ export default {
   flex-shrink: 0;
   overflow: hidden;
 }
-/* styling of Input */
+
 .input {
   font-size: 0.9rem;
   background-color: transparent;
@@ -302,7 +297,7 @@ export default {
   border: none;
   color: #fff;
 }
-/* styling of animated border */
+
 .search:before {
   content: "";
   position: absolute;
@@ -316,7 +311,7 @@ export default {
   border-radius: 1px;
   transition: transform var(--timing) ease;
 }
-/* Hover on Input */
+
 .search:focus-within {
   border-radius: var(--after-border-radius);
 }
@@ -324,24 +319,23 @@ export default {
 input:focus {
   outline: none;
 }
-/* here is code of animated border */
+
 .search:focus-within:before {
   transform: scale(1);
 }
-/* styling of close button */
-/* == you can click the close button to remove text == */
+
 .reset {
   border: none;
   background: none;
   opacity: 0;
   visibility: hidden;
 }
-/* close button shown when typing */
+
 input:not(:placeholder-shown) ~ .reset {
   opacity: 1;
   visibility: visible;
 }
-/* sizing svg icons */
+
 .search img {
   margin-top: 3px;
 }
