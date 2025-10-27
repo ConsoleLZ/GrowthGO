@@ -287,8 +287,10 @@ export default {
   border-radius: var(--size);
   background-color: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 /* styling of Input */
 .input {
