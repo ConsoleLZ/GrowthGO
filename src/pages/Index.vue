@@ -1,17 +1,27 @@
 <template>
   <Header>
     <div class="site-info">
-      <div class="avatar" :style="'background-image: url(' + $static.metadata.avatar + ')'"></div>
-      <div class="title">{{ $static.metadata.title }}</div>
+      <div style="display: flex;align-items: center;gap: 15px;margin-bottom: 20px;">
+        <div
+          class="avatar"
+          :style="'background-image: url(' + $static.metadata.avatar + ')'"
+        ></div>
+        <div class="title">{{ $static.metadata.title }}</div>
+      </div>
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
 
     <div class="main-content">
       <div class="quick-access">
         <div class="card-grid">
-          <div class="nav-card" v-for="item in JSON.parse($static.metadata.quickAccess)" :key="item.url" @click="openLink(item.url)">
+          <div
+            class="nav-card"
+            v-for="item in JSON.parse($static.metadata.quickAccess)"
+            :key="item.url"
+            @click="openLink(item.url)"
+          >
             <div class="card-icon">
-              <img :src="item.icon" width="36px" alt="">
+              <img :src="item.icon" width="36px" alt="" />
             </div>
             <div class="card-content">
               <h3>{{ item.name }}</h3>
@@ -24,8 +34,14 @@
     <div class="show-more">查看更多<span>→</span></div>
 
     <div class="friend-links">
-      <a :href="item.url" target="_blank" v-for="(item, index) in JSON.parse($static.metadata.friendLink)" :key="index"
-        class="friend-link">{{ item.name }}</a>
+      <a
+        :href="item.url"
+        target="_blank"
+        v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
+        :key="index"
+        class="friend-link"
+        >{{ item.name }}</a
+      >
     </div>
   </Header>
 </template>
@@ -49,9 +65,9 @@ export default {
   },
   methods: {
     openLink(url) {
-      window.open(url, '_blank');
-    }
-  }
+      window.open(url, "_blank");
+    },
+  },
 };
 </script>
 
@@ -67,7 +83,7 @@ export default {
 }
 
 .avatar {
-  --size: 8rem;
+  --size: 4rem;
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);
@@ -80,7 +96,6 @@ export default {
 .title {
   font-weight: 700;
   font-size: 28px;
-  margin-bottom: 20px;
 }
 
 .sub-title {
@@ -91,10 +106,9 @@ export default {
 
 /* 新增内容样式 */
 .main-content {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px 40px 20px;
-  margin-top: 70px;
+  margin-top: 8rem;
 }
 
 .section-title {
@@ -209,9 +223,15 @@ export default {
 
 /* 左右移动动画 */
 @keyframes left-right-move {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .show-more > span {
