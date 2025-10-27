@@ -5,5 +5,6 @@ import HeaderLayout from '~/layouts/Header.vue'
 
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
+  head.htmlAttrs = { lang: 'zh-CN' }
   Vue.component('Header', HeaderLayout)
 }
