@@ -1,11 +1,11 @@
 <template>
   <div style="position: relative;min-height: 100vh;">
     <div class="header">
-      <g-link class="item">
+      <g-link to="/" class="item">
         <img src="@/assets/icon/home.svg" width="18px" alt="">
         <div>首页</div>
       </g-link>
-      <g-link class="item">
+      <g-link to="/Recommend/" class="item">
         <img src="@/assets/icon/thumbs-up.svg" width="18px" alt="">
         <div>推荐</div>
       </g-link>
