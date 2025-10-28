@@ -110,6 +110,10 @@ html,body {
   color: #ffffff;
 }
 
+html::-webkit-scrollbar,body::-webkit-scrollbar {
+  display: none;
+}
+
 a {
   /* 移除下划线 */
   text-decoration: none;
