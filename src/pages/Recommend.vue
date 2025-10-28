@@ -25,27 +25,28 @@
           class="recommendation-card" 
           v-for="item in filteredRecommendations" 
           :key="item.id"
-          @click="openLink(item.url)"
         >
-          <div class="card-header">
-            <div class="card-icon">
-              <img :src="item.icon" width="24px" alt="" />
+          <div class="card-main-content" @click="openLink(item.url)">
+            <div class="card-header">
+              <div class="card-icon">
+                <img :src="item.icon" width="24px" alt="" />
+              </div>
+              <div class="card-title">
+                <h3>{{ item.title }}</h3>
+                <span class="card-category">{{ item.category }}</span>
+              </div>
             </div>
-            <div class="card-title">
-              <h3>{{ item.title }}</h3>
-              <span class="card-category">{{ item.category }}</span>
+            <div class="card-content">
+              <p>{{ item.description }}</p>
             </div>
-          </div>
-          <div class="card-content">
-            <p>{{ item.description }}</p>
           </div>
           <div class="card-footer">
             <div class="card-tags">
               <span v-for="tag in item.tags" :key="tag" class="tag">{{ tag }}</span>
             </div>
             <div class="card-actions">
-              <button class="action-btn" @click.stop="openLink(item.url)">访问</button>
-              <button class="action-btn secondary" @click.stop="copyLink(item.url)">复制</button>
+              <button class="action-btn" @click="openLink(item.url)">访问</button>
+              <button class="action-btn secondary" @click="copyLink(item.url)">复制</button>
             </div>
           </div>
         </div>
@@ -205,7 +206,7 @@ export default {
 .recommendations-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px 40px 20px;
+  padding: 10px 15px;
 }
 
 .section-header {
@@ -269,16 +270,23 @@ export default {
   border-radius: 12px;
   padding: 24px;
   transition: all 0.3s ease;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 220px; /* 确保卡片有最小高度 */
 }
 
 .recommendation-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: rgba(18, 18, 18, 0.4);
+}
+
+/* 新增：卡片主要内容区域 */
+.card-main-content {
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
@@ -319,8 +327,8 @@ export default {
 }
 
 .card-content {
-  margin-bottom: 20px;
   flex: 1;
+  margin-bottom: 20px;
 }
 
 .card-content p {
@@ -328,12 +336,20 @@ export default {
   font-size: 14px;
   color: #cccccc;
   line-height: 1.5;
+  /* 限制描述文本行数，避免内容过长 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: auto; /* 确保footer在底部 */
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-tags {
@@ -429,6 +445,10 @@ export default {
   .card-actions {
     width: 100%;
     justify-content: flex-end;
+  }
+  
+  .recommendation-card {
+    min-height: auto; /* 在移动端取消最小高度限制 */
   }
 }
 </style>
