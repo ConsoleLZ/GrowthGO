@@ -191,7 +191,6 @@ export default {
     },
     copyLink(url) {
       navigator.clipboard.writeText(url).then(() => {
-        // 可以在这里添加复制成功的提示
         alert('链接已复制到剪贴板');
       }).catch(err => {
         console.error('复制失败:', err);
@@ -272,7 +271,7 @@ export default {
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  min-height: 220px; /* 确保卡片有最小高度 */
+  min-height: 220px;
 }
 
 .recommendation-card:hover {
@@ -281,7 +280,6 @@ export default {
   background-color: rgba(18, 18, 18, 0.4);
 }
 
-/* 新增：卡片主要内容区域 */
 .card-main-content {
   flex: 1;
   cursor: pointer;
@@ -336,7 +334,6 @@ export default {
   font-size: 14px;
   color: #cccccc;
   line-height: 1.5;
-  /* 限制描述文本行数，避免内容过长 */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -347,7 +344,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: auto; /* 确保footer在底部 */
+  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -397,7 +394,6 @@ export default {
   color: #fff;
 }
 
-/* 加载更多 */
 .load-more {
   text-align: center;
   font-size: 16px;
@@ -448,7 +444,7 @@ export default {
   }
   
   .recommendation-card {
-    min-height: auto; /* 在移动端取消最小高度限制 */
+    min-height: auto;
   }
 }
 </style>
