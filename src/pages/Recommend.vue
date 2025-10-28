@@ -3,7 +3,7 @@
     <!-- 推荐页面内容 -->
     <div class="recommendations-container">
       <div class="section-header">
-        <h2 class="section-title">推荐内容</h2>
+        <h2 class="section-title">推荐</h2>
         <p class="section-subtitle">发现精选资源和实用工具</p>
       </div>
 
