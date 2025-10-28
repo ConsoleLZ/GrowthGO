@@ -25,34 +25,21 @@
           class="recommendation-card"
           v-for="item in filteredRecommendations"
           :key="item.id"
+          @click="openLink(item.url)"
         >
-          <div class="card-main-content" @click="openLink(item.url)">
-            <div class="card-header">
-              <div class="card-icon">
-                <img :src="item.icon" width="24px" alt="" />
-              </div>
-              <div class="card-title">
-                {{ item.title }}
-              </div>
+          <div class="card-header">
+            <div class="card-icon">
+              <img :src="item.icon" width="20px" alt="" />
             </div>
-            <div class="card-content">
-              <p>{{ item.description }}</p>
+            <div class="card-title">
+              <h3>{{ item.title }}</h3>
+              <div style="display: flex;align-items: center;gap: 5px;">
+                <span v-for="tag in item.tags" :key="tag" class="tag">{{ tag }}</span>
+              </div>
             </div>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span v-for="tag in item.tags" :key="tag" class="tag">{{
-                tag
-              }}</span>
-            </div>
-            <div class="card-actions">
-              <button class="action-btn" @click="openLink(item.url)">
-                访问
-              </button>
-              <button class="action-btn secondary" @click="copyLink(item.url)">
-                复制
-              </button>
-            </div>
+          <div class="card-content">
+            <p class="description" :title="item.description">{{ item.description }}</p>
           </div>
         </div>
       </div>
@@ -85,7 +72,7 @@ export default {
           id: 1,
           title: "Vue.js 官方文档",
           description:
-            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
+            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
           url: "https://vuejs.org",
           icon: require("@/assets/icon/baidu.svg"),
           category: "tools",
@@ -195,25 +182,19 @@ export default {
     },
   },
   methods: {
+    getCategoryName(categoryId) {
+      const category = this.categories.find(cat => cat.id === categoryId);
+      return category ? category.name : categoryId;
+    },
     openLink(url) {
       window.open(url, "_blank");
     },
     setActiveCategory(categoryId) {
       this.activeCategory = categoryId;
-      this.displayedCount = 8; // 重置显示数量
+      this.displayedCount = 8;
     },
     loadMore() {
       this.displayedCount += 8;
-    },
-    copyLink(url) {
-      navigator.clipboard
-        .writeText(url)
-        .then(() => {
-          alert("链接已复制到剪贴板");
-        })
-        .catch((err) => {
-          console.error("复制失败:", err);
-        });
     },
   },
 };
@@ -278,39 +259,32 @@ export default {
 /* 推荐内容网格 */
 .recommendations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
   margin-bottom: 40px;
 }
 
 .recommendation-card {
   background-color: rgba(18, 18, 18, 0.2);
   border-radius: 12px;
-  padding: 24px;
+  padding: 20px;
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  min-height: 220px;
-}
-
-.recommendation-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background-color: rgba(18, 18, 18, 0.4);
-}
-
-.card-main-content {
-  flex: 1;
   cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
+.recommendation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background-color: rgba(18, 18, 18, 0.4);
+}
+
 .card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .card-icon {
@@ -320,93 +294,68 @@ export default {
   align-items: center;
   justify-content: center;
   background: #f8f9fa;
-  border-radius: 5px;
+  border-radius: 8px;
   flex-shrink: 0;
+  padding: 8px;
 }
 
 .card-title {
   flex: 1;
+  min-width: 0;
+}
+
+.card-title h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
   font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-category {
-  font-size: 12px;
+  font-size: 11px;
   color: #238df7;
   background: rgba(35, 141, 247, 0.1);
   padding: 2px 8px;
   border-radius: 4px;
+  display: inline-block;
 }
 
 .card-content {
+  margin-bottom: 12px;
   flex: 1;
-  margin-bottom: 20px;
 }
 
-.card-content p {
+.description {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #cccccc;
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 4px;
 }
 
 .tag {
-  font-size: 11px;
+  font-size: 10px;
   color: #999;
   background: rgba(255, 255, 255, 0.1);
   padding: 2px 6px;
   border-radius: 3px;
 }
 
-.card-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.action-btn {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background: #238df7;
-  color: white;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s ease;
-}
-
-.action-btn:hover {
-  background: #1a7ad9;
-}
-
-.action-btn.secondary {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #cccccc;
-}
-
-.action-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
+/* 加载更多 */
 .load-more {
   text-align: center;
   font-size: 16px;
@@ -425,11 +374,12 @@ export default {
 /* 响应式调整 */
 @media (max-width: 768px) {
   .recommendations-container {
-    padding: 40px 15px 40px 15px;
+    padding: 40px 15px;
   }
 
   .recommendations-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .section-title {
@@ -445,19 +395,37 @@ export default {
     padding: 6px 12px;
   }
 
-  .card-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+  .recommendation-card {
+    padding: 16px;
+    min-height: 140px;
   }
 
-  .card-actions {
-    width: 100%;
-    justify-content: flex-end;
+  .card-header {
+    gap: 10px;
+    margin-bottom: 10px;
   }
 
+  .card-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .card-title h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .recommendation-card {
     min-height: auto;
+  }
+  
+  .card-header {
+    align-items: center;
   }
 }
 </style>
