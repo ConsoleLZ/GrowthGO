@@ -9,8 +9,8 @@
 
       <!-- 分类导航 -->
       <div class="category-nav">
-        <button 
-          v-for="category in categories" 
+        <button
+          v-for="category in categories"
           :key="category.id"
           :class="['category-btn', { active: activeCategory === category.id }]"
           @click="setActiveCategory(category.id)"
@@ -21,9 +21,9 @@
 
       <!-- 推荐内容网格 -->
       <div class="recommendations-grid">
-        <div 
-          class="recommendation-card" 
-          v-for="item in filteredRecommendations" 
+        <div
+          class="recommendation-card"
+          v-for="item in filteredRecommendations"
           :key="item.id"
         >
           <div class="card-main-content" @click="openLink(item.url)">
@@ -32,8 +32,7 @@
                 <img :src="item.icon" width="24px" alt="" />
               </div>
               <div class="card-title">
-                <h3>{{ item.title }}</h3>
-                <span class="card-category">{{ item.category }}</span>
+                {{ item.title }}
               </div>
             </div>
             <div class="card-content">
@@ -42,11 +41,17 @@
           </div>
           <div class="card-footer">
             <div class="card-tags">
-              <span v-for="tag in item.tags" :key="tag" class="tag">{{ tag }}</span>
+              <span v-for="tag in item.tags" :key="tag" class="tag">{{
+                tag
+              }}</span>
             </div>
             <div class="card-actions">
-              <button class="action-btn" @click="openLink(item.url)">访问</button>
-              <button class="action-btn secondary" @click="copyLink(item.url)">复制</button>
+              <button class="action-btn" @click="openLink(item.url)">
+                访问
+              </button>
+              <button class="action-btn secondary" @click="copyLink(item.url)">
+                复制
+              </button>
             </div>
           </div>
         </div>
@@ -67,116 +72,127 @@ export default {
   },
   data() {
     return {
-      activeCategory: 'all',
+      activeCategory: "all",
       categories: [
-        { id: 'all', name: '全部' },
-        { id: 'tools', name: '工具' },
-        { id: 'resources', name: '资源' },
-        { id: 'tutorials', name: '教程' },
-        { id: 'inspiration', name: '灵感' }
+        { id: "all", name: "全部" },
+        { id: "tools", name: "工具" },
+        { id: "resources", name: "资源" },
+        { id: "tutorials", name: "教程" },
+        { id: "inspiration", name: "灵感" },
       ],
       recommendations: [
         {
           id: 1,
-          title: 'Vue.js 官方文档',
-          description: '渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。',
-          url: 'https://vuejs.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tools',
-          tags: ['前端', '框架', 'JavaScript']
+          title: "Vue.js 官方文档",
+          description:
+            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
+          url: "https://vuejs.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tools",
+          tags: ["前端", "框架", "JavaScript"],
         },
         {
           id: 2,
-          title: 'Gridsome 中文指南',
-          description: '基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。',
-          url: 'https://gridsome.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tutorials',
-          tags: ['静态站点', 'Vue', 'Jamstack']
+          title: "Gridsome 中文指南",
+          description:
+            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
+          url: "https://gridsome.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tutorials",
+          tags: ["静态站点", "Vue", "Jamstack"],
         },
         {
           id: 3,
-          title: 'Unsplash 图库',
-          description: '高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。',
-          url: 'https://unsplash.com',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'resources',
-          tags: ['图片', '免费', '设计']
+          title: "Unsplash 图库",
+          description:
+            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
+          url: "https://unsplash.com",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "resources",
+          tags: ["图片", "免费", "设计"],
         },
         {
           id: 4,
-          title: 'Vue.js 官方文档',
-          description: '渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。',
-          url: 'https://vuejs.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tools',
-          tags: ['前端', '框架', 'JavaScript']
+          title: "Vue.js 官方文档",
+          description:
+            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
+          url: "https://vuejs.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tools",
+          tags: ["前端", "框架", "JavaScript"],
         },
         {
           id: 5,
-          title: 'Gridsome 中文指南',
-          description: '基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。',
-          url: 'https://gridsome.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tutorials',
-          tags: ['静态站点', 'Vue', 'Jamstack']
+          title: "Gridsome 中文指南",
+          description:
+            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
+          url: "https://gridsome.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tutorials",
+          tags: ["静态站点", "Vue", "Jamstack"],
         },
         {
           id: 6,
-          title: 'Unsplash 图库',
-          description: '高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。',
-          url: 'https://unsplash.com',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'resources',
-          tags: ['图片', '免费', '设计']
+          title: "Unsplash 图库",
+          description:
+            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
+          url: "https://unsplash.com",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "resources",
+          tags: ["图片", "免费", "设计"],
         },
         {
           id: 7,
-          title: 'Vue.js 官方文档',
-          description: '渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。',
-          url: 'https://vuejs.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tools',
-          tags: ['前端', '框架', 'JavaScript']
+          title: "Vue.js 官方文档",
+          description:
+            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
+          url: "https://vuejs.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tools",
+          tags: ["前端", "框架", "JavaScript"],
         },
         {
           id: 8,
-          title: 'Gridsome 中文指南',
-          description: '基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。',
-          url: 'https://gridsome.org',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'tutorials',
-          tags: ['静态站点', 'Vue', 'Jamstack']
+          title: "Gridsome 中文指南",
+          description:
+            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
+          url: "https://gridsome.org",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "tutorials",
+          tags: ["静态站点", "Vue", "Jamstack"],
         },
         {
           id: 9,
-          title: 'Unsplash 图库',
-          description: '高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。',
-          url: 'https://unsplash.com',
-          icon: require('@/assets/icon/baidu.svg'),
-          category: 'resources',
-          tags: ['图片', '免费', '设计']
-        }
+          title: "Unsplash 图库",
+          description:
+            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
+          url: "https://unsplash.com",
+          icon: require("@/assets/icon/baidu.svg"),
+          category: "resources",
+          tags: ["图片", "免费", "设计"],
+        },
       ],
-      displayedCount: 8
+      displayedCount: 8,
     };
   },
   computed: {
     filteredRecommendations() {
-      if (this.activeCategory === 'all') {
+      if (this.activeCategory === "all") {
         return this.recommendations.slice(0, this.displayedCount);
       }
       return this.recommendations
-        .filter(item => item.category === this.activeCategory)
+        .filter((item) => item.category === this.activeCategory)
         .slice(0, this.displayedCount);
     },
     hasMoreItems() {
-      if (this.activeCategory === 'all') {
+      if (this.activeCategory === "all") {
         return this.displayedCount < this.recommendations.length;
       }
-      const categoryItems = this.recommendations.filter(item => item.category === this.activeCategory);
+      const categoryItems = this.recommendations.filter(
+        (item) => item.category === this.activeCategory
+      );
       return this.displayedCount < categoryItems.length;
-    }
+    },
   },
   methods: {
     openLink(url) {
@@ -190,12 +206,15 @@ export default {
       this.displayedCount += 8;
     },
     copyLink(url) {
-      navigator.clipboard.writeText(url).then(() => {
-        alert('链接已复制到剪贴板');
-      }).catch(err => {
-        console.error('复制失败:', err);
-      });
-    }
+      navigator.clipboard
+        .writeText(url)
+        .then(() => {
+          alert("链接已复制到剪贴板");
+        })
+        .catch((err) => {
+          console.error("复制失败:", err);
+        });
+    },
   },
 };
 </script>
@@ -289,31 +308,25 @@ export default {
 
 .card-header {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
 .card-icon {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f8f9fa;
-  border-radius: 10px;
+  border-radius: 5px;
   flex-shrink: 0;
 }
 
 .card-title {
   flex: 1;
-}
-
-.card-title h3 {
-  margin: 0 0 5px 0;
-  font-size: 18px;
   font-weight: 600;
-  color: #fff;
 }
 
 .card-category {
@@ -414,35 +427,35 @@ export default {
   .recommendations-container {
     padding: 40px 15px 40px 15px;
   }
-  
+
   .recommendations-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .section-title {
     font-size: 24px;
   }
-  
+
   .category-nav {
     gap: 5px;
   }
-  
+
   .category-btn {
     font-size: 12px;
     padding: 6px 12px;
   }
-  
+
   .card-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
-  
+
   .card-actions {
     width: 100%;
     justify-content: flex-end;
   }
-  
+
   .recommendation-card {
     min-height: auto;
   }
