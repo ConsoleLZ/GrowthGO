@@ -10,12 +10,12 @@
       <!-- 分类导航 -->
       <div class="category-nav">
         <button
-          v-for="category in categories"
-          :key="category.id"
-          :class="['category-btn', { active: activeCategory === category.id }]"
-          @click="setActiveCategory(category.id)"
+          v-for="item in Object.keys(tagList)"
+          :key="item"
+          :class="['category-btn', { active: activeTag === item }]"
+          @click="setActiveCategory(item)"
         >
-          {{ category.name }}
+          {{ tagList[item] }}
         </button>
       </div>
 
@@ -24,7 +24,7 @@
         <div
           class="recommendation-card"
           v-for="item in filteredRecommendations"
-          :key="item.id"
+          :key="item.url"
           @click="openLink(item.url)"
         >
           <div class="card-header">
@@ -32,14 +32,18 @@
               <img :src="item.icon" width="20px" alt="" />
             </div>
             <div class="card-title">
-              <h3>{{ item.title }}</h3>
+              <h3>{{ item.name }}</h3>
               <div style="display: flex;align-items: center;gap: 5px;">
-                <span v-for="tag in item.tags" :key="tag" class="tag">{{ tag }}</span>
+                <span v-for="tag in item.tags" :key="tag" class="tag">{{
+                  tag
+                }}</span>
               </div>
             </div>
           </div>
           <div class="card-content">
-            <p class="description" :title="item.description">{{ item.description }}</p>
+            <p class="description" :title="item.description">
+              {{ item.description }}
+            </p>
           </div>
         </div>
       </div>
@@ -59,104 +63,47 @@ export default {
   },
   data() {
     return {
-      activeCategory: "all",
-      categories: [
-        { id: "all", name: "全部" },
-        { id: "tools", name: "工具" },
-        { id: "resources", name: "资源" },
-        { id: "tutorials", name: "教程" },
-        { id: "inspiration", name: "灵感" },
-      ],
+      activeTag: "all",
+      tagList: {
+        all: "全部",
+        icon: "图标",
+        css: "css",
+        animation: "动画",
+        openSource: "开源项目",
+        web: "前端",
+        development: "项目开发",
+        componentLibrary: "组件库",
+        docs: "文档",
+        docsTools: "文档工具",
+        template: "模板",
+        tools: "工具",
+        scaffolding: "脚手架",
+        software: "软件",
+        devise: "UI设计",
+        resource: "资源素材",
+        depend: "项目管理",
+        learn: "学习",
+        ai: "智能AI",
+        mcp: "MCP",
+        hardware: "有关硬件",
+        community: "社区",
+        cloudPlatform: "云平台",
+        safe: "网络安全",
+        game: "游戏",
+        plugin: "插件",
+        blender: "blender插件",
+        model: "3D建模",
+        vscode: "vscode",
+        other: "其它",
+      },
       recommendations: [
         {
-          id: 1,
-          title: "Vue.js 官方文档",
+          name: "Vue.js 官方文档",
           description:
             "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
           url: "https://vuejs.org",
           icon: require("@/assets/icon/baidu.svg"),
-          category: "tools",
-          tags: ["前端", "框架", "JavaScript"],
-        },
-        {
-          id: 2,
-          title: "Gridsome 中文指南",
-          description:
-            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
-          url: "https://gridsome.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "tutorials",
-          tags: ["静态站点", "Vue", "Jamstack"],
-        },
-        {
-          id: 3,
-          title: "Unsplash 图库",
-          description:
-            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
-          url: "https://unsplash.com",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "resources",
-          tags: ["图片", "免费", "设计"],
-        },
-        {
-          id: 4,
-          title: "Vue.js 官方文档",
-          description:
-            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
-          url: "https://vuejs.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "tools",
-          tags: ["前端", "框架", "JavaScript"],
-        },
-        {
-          id: 5,
-          title: "Gridsome 中文指南",
-          description:
-            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
-          url: "https://gridsome.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "tutorials",
-          tags: ["静态站点", "Vue", "Jamstack"],
-        },
-        {
-          id: 6,
-          title: "Unsplash 图库",
-          description:
-            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
-          url: "https://unsplash.com",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "resources",
-          tags: ["图片", "免费", "设计"],
-        },
-        {
-          id: 7,
-          title: "Vue.js 官方文档",
-          description:
-            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
-          url: "https://vuejs.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "tools",
-          tags: ["前端", "框架", "JavaScript"],
-        },
-        {
-          id: 8,
-          title: "Gridsome 中文指南",
-          description:
-            "基于Vue.js的静态站点生成器，为现代网站开发提供极速体验。",
-          url: "https://gridsome.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "tutorials",
-          tags: ["静态站点", "Vue", "Jamstack"],
-        },
-        {
-          id: 9,
-          title: "Unsplash 图库",
-          description:
-            "高质量免费图片库，拥有数百万张高清照片，可供个人和商业使用。",
-          url: "https://unsplash.com",
-          icon: require("@/assets/icon/baidu.svg"),
-          category: "resources",
-          tags: ["图片", "免费", "设计"],
+          tags: ['前端', '开源项目'],
         },
       ],
       displayedCount: 8,
@@ -164,33 +111,33 @@ export default {
   },
   computed: {
     filteredRecommendations() {
-      if (this.activeCategory === "all") {
+      if (this.activeTag === "all") {
         return this.recommendations.slice(0, this.displayedCount);
       }
       return this.recommendations
-        .filter((item) => item.category === this.activeCategory)
+        .filter((item) => item === this.activeTag)
         .slice(0, this.displayedCount);
     },
     hasMoreItems() {
-      if (this.activeCategory === "all") {
+      if (this.activeTag === "all") {
         return this.displayedCount < this.recommendations.length;
       }
       const categoryItems = this.recommendations.filter(
-        (item) => item.category === this.activeCategory
+        (item) => item === this.activeTag
       );
       return this.displayedCount < categoryItems.length;
     },
   },
   methods: {
     getCategoryName(categoryId) {
-      const category = this.categories.find(cat => cat.id === categoryId);
+      const category = this.categories.find((cat) => cat.id === categoryId);
       return category ? category.name : categoryId;
     },
     openLink(url) {
       window.open(url, "_blank");
     },
-    setActiveCategory(categoryId) {
-      this.activeCategory = categoryId;
+    setActiveCategory(tagName) {
+      this.activeTag = tagName;
       this.displayedCount = 8;
     },
     loadMore() {
@@ -265,7 +212,8 @@ export default {
 }
 
 .recommendation-card {
-  background-color: rgba(18, 18, 18, 0.2);
+  width: 280px;
+  background-color: rgba(18, 18, 18, 0.3);
   border-radius: 12px;
   padding: 20px;
   transition: all 0.3s ease;
@@ -277,7 +225,7 @@ export default {
 .recommendation-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background-color: rgba(18, 18, 18, 0.4);
+  background-color: rgba(18, 18, 18, 0.5);
 }
 
 .card-header {
@@ -358,8 +306,8 @@ export default {
 /* 加载更多 */
 .load-more {
   text-align: center;
-  font-size: 16px;
-  color: #238df7;
+  font-size: 14px;
+  color: #fff;
   cursor: pointer;
   padding: 15px;
   transition: all 0.3s ease;
@@ -419,11 +367,11 @@ export default {
   .recommendations-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .recommendation-card {
     min-height: auto;
   }
-  
+
   .card-header {
     align-items: center;
   }
