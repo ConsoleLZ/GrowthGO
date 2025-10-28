@@ -11,16 +11,31 @@
         <div class="title">{{ $static.metadata.title }}</div>
       </div>
 
-      <!-- From Uiverse.io by satyamchaudharydev -->
-      <div class="search">
-        <div class="icon">
-          <img src="@/assets/icon/baidu.svg" width="20px" alt="">
+      <!-- 搜索框和下拉菜单 -->
+      <div class="search-container">
+        <div class="search">
+          <div class="icon" @click="toggleDropdown">
+            <img :src="currentEngine.icon" width="20px" alt="" />
+          </div>
+          <input
+            class="input"
+            :placeholder="currentEngine.placeholder"
+            type="text"
+            @keyup.enter="performSearch"
+          />
         </div>
-        <input
-          class="input"
-          placeholder="搜一搜"
-          type="text"
-        />
+        <!-- 下拉菜单放在搜索容器外部 -->
+        <div class="dropdown" v-show="showDropdown">
+          <div
+            class="dropdown-item"
+            v-for="engine in searchEngines"
+            :key="engine.name"
+            @click="selectEngine(engine)"
+          >
+            <img :src="engine.icon" width="16px" alt="" />
+            <span>{{ engine.name }}</span>
+          </div>
+        </div>
       </div>
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
@@ -77,9 +92,99 @@ export default {
   metaInfo: {
     title: "首页",
   },
+  data() {
+    return {
+      showDropdown: false,
+      searchEngines: [
+        {
+          name: "百度",
+          value: "baidu",
+          icon: require("@/assets/icon/baidu.svg"),
+          placeholder: "用百度搜一搜",
+          searchUrl: "https://www.baidu.com/s?wd=",
+        },
+        {
+          name: "Bing",
+          value: "bing",
+          icon: require("@/assets/icon/bing.svg"),
+          placeholder: "用Bing搜一搜",
+          searchUrl: "https://www.bing.com/search?q=",
+        },
+      ],
+      currentEngine: {},
+    };
+  },
+  mounted() {
+    // 尝试从localStorage获取保存的搜索引擎
+    this.loadSavedEngine();
+
+    // 点击页面其他地方关闭下拉菜单
+    document.addEventListener("click", this.closeDropdown);
+  },
+  beforeDestroy() {
+    // 移除事件监听
+    document.removeEventListener("click", this.closeDropdown);
+  },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
+    },
+    toggleDropdown(event) {
+      // 阻止事件冒泡，防止触发document的点击事件
+      event.stopPropagation();
+      this.showDropdown = !this.showDropdown;
+    },
+    selectEngine(engine) {
+      this.currentEngine = engine;
+      this.showDropdown = false;
+
+      // 保存选择到localStorage
+      this.saveEngine(engine);
+    },
+    closeDropdown(event) {
+      // 如果点击的不是搜索容器区域，则关闭下拉菜单
+      if (!event.target.closest(".search-container")) {
+        this.showDropdown = false;
+      }
+    },
+    performSearch(event) {
+      const query = event.target.value.trim();
+      if (query) {
+        window.open(
+          this.currentEngine.searchUrl + encodeURIComponent(query),
+          "_blank"
+        );
+      }
+    },
+    // 保存搜索引擎到localStorage
+    saveEngine(engine) {
+      try {
+        localStorage.setItem("preferredSearchEngine", JSON.stringify(engine));
+      } catch (e) {
+        console.warn("无法保存搜索引擎偏好:", e);
+      }
+    },
+    // 从localStorage加载保存的搜索引擎
+    loadSavedEngine() {
+      try {
+        const savedEngine = localStorage.getItem("preferredSearchEngine");
+        if (savedEngine) {
+          const parsedEngine = JSON.parse(savedEngine);
+          // 确保保存的引擎在可用引擎列表中
+          const foundEngine = this.searchEngines.find(
+            (engine) => engine.value === parsedEngine.value
+          );
+          if (foundEngine) {
+            this.currentEngine = foundEngine;
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn("无法加载保存的搜索引擎:", e);
+      }
+
+      // 如果没有保存的引擎或加载失败，使用默认引擎
+      this.currentEngine = this.searchEngines[0];
     },
   },
 };
@@ -255,6 +360,12 @@ export default {
   animation: left-right-move 1.2s ease-in-out infinite;
 }
 
+/* 搜索容器 */
+.search-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
 .search {
   --timing: 0.3s;
   --width-of-input: 36rem;
@@ -272,8 +383,8 @@ export default {
   border-radius: var(--border-radius);
   transition: border-radius 0.5s ease;
   background: rgba(0, 0, 0, 0.5);
-  margin-bottom: 24px;
 }
+
 .search .icon {
   --size: 30px;
   width: var(--size);
@@ -284,7 +395,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: hidden;
+  cursor: pointer;
 }
 
 .input {
@@ -338,5 +449,50 @@ input:not(:placeholder-shown) ~ .reset {
 
 .search img {
   margin-top: 3px;
+}
+
+/* 下拉菜单样式 */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 120px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #333;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item img {
+  margin-top: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .search {
+    --width-of-input: 90vw;
+  }
+
+  .dropdown {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
 }
 </style>
