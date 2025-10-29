@@ -5,7 +5,7 @@
         <img src="@/assets/icon/home.svg" width="18px" alt="">
         <div>首页</div>
       </g-link>
-      <g-link to="/Recommend/" class="item">
+      <g-link to="/recommend/" class="item">
         <img src="@/assets/icon/thumbs-up.svg" width="18px" alt="">
         <div>推荐</div>
       </g-link>
