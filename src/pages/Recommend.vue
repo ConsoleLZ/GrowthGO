@@ -104,13 +104,12 @@ export default {
 /* 推荐内容网格 */
 .recommendations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
   margin-bottom: 40px;
 }
 
 .recommendation-card {
-  width: 280px;
   background-color: rgba(18, 18, 18, 0.3);
   border-radius: 12px;
   padding: 20px;

@@ -2,6 +2,7 @@ const tags = {
   frontEnd: "前端",
   openSource: "开源项目",
   community: "社区",
+  safe: "网络安全",
 };
 
 export const mainData = [
@@ -11,7 +12,7 @@ export const mainData = [
     url: "https://risingstars.js.org/",
     description: "了解每年JS生态系统的趋势",
     tags: [tags.frontEnd],
-    recommend: true
+    recommend: true,
   },
   {
     name: "Can I use",
@@ -34,7 +35,7 @@ export const mainData = [
     url: "https://juejin.cn/",
     description: "一个很好的开发者社区，可以看看大佬的各种文章",
     tags: [tags.community],
-    recommend: true
+    recommend: true,
   },
   {
     name: "思否",
@@ -42,6 +43,22 @@ export const mainData = [
     url: "https://segmentfault.com/",
     description: "技术分享",
     tags: [tags.community],
-    recommend: true
+  },
+  {
+    name: "BUUCTF",
+    ico: "https://buuoj.cn/themes/buu_core/static/img/favicon.ico",
+    url: "https://buuoj.cn/",
+    description: "ctf我不会",
+    tags: [tags.safe],
+    recommend: true,
+  },
+  {
+    name: "WgpSec CTF",
+    ico:
+      "https://ctf.wgpsec.org/files/4aecfc78e9fe458cbd934aacc69ffd94/favicon.ico",
+    url: "https://ctf.wgpsec.org/",
+    description: "打CTF怎么能没有电竞椅呢!",
+    tags: [tags.safe],
+    recommend: true,
   },
 ];
