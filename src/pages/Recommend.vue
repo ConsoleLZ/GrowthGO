@@ -1,6 +1,6 @@
 <template>
   <Header>
-    <div id="Recommend">
+    <div id="recommend-page">
       <div class="recommendations-container">
         <div class="section-header">
           <h2 class="section-title">推荐</h2>
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style scoped>
-#Recommend {
+#recommend-page {
   /* 推荐页面容器 */
   .recommendations-container {
     max-width: 1200px;

@@ -1,6 +1,6 @@
 <template>
   <Header>
-    <div id="Home">
+    <div id="home-page">
       <div class="site-info">
         <div
           style="display: flex;align-items: center;gap: 15px;margin-bottom: 20px;"
@@ -193,7 +193,7 @@ export default {
 </script>
 
 <style scoped>
-#Home {
+#home-page {
   .site-info {
     width: 100%;
     height: fit-content;
