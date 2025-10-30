@@ -25,6 +25,8 @@ quickAccess:
 friendLink:
   - name: Gridsome
     url: https://gridsome.org/
+  - name: Element
+    url: https://element.eleme.cn/
   - name: IconPark
     url: https://iconpark.oceanengine.com/
   - name: IconFont

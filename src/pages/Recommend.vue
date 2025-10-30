@@ -7,18 +7,6 @@
         <p class="section-subtitle">发现精选资源和实用工具</p>
       </div>
 
-      <!-- 分类导航 -->
-      <!-- <div class="category-nav">
-        <button
-          v-for="item in Object.keys(tagList)"
-          :key="item"
-          :class="['category-btn', { active: activeTag === item }]"
-          @click="setActiveCategory(item)"
-        >
-          {{ tagList[item] }}
-        </button>
-      </div> -->
-
       <!-- 推荐内容网格 -->
       <div class="recommendations-grid">
         <div
@@ -63,39 +51,6 @@ export default {
   },
   data() {
     return {
-      activeTag: "all",
-      tagList: {
-        all: "全部",
-        icon: "图标",
-        css: "css",
-        animation: "动画",
-        openSource: "开源项目",
-        web: "前端",
-        development: "项目开发",
-        componentLibrary: "组件库",
-        docs: "文档",
-        docsTools: "文档工具",
-        template: "模板",
-        tools: "工具",
-        scaffolding: "脚手架",
-        software: "软件",
-        devise: "UI设计",
-        resource: "资源素材",
-        depend: "项目管理",
-        learn: "学习",
-        ai: "智能AI",
-        mcp: "MCP",
-        hardware: "有关硬件",
-        community: "社区",
-        cloudPlatform: "云平台",
-        safe: "网络安全",
-        game: "游戏",
-        plugin: "插件",
-        blender: "blender插件",
-        model: "3D建模",
-        vscode: "vscode",
-        other: "其它",
-      },
       recommendations: [
         {
           name: "Vue.js 官方文档",
@@ -103,42 +58,23 @@ export default {
             "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
           url: "https://vuejs.org",
           icon: require("@/assets/icon/baidu.svg"),
-          tags: ['前端', '开源项目'],
-        },
+          tags: ["前端", "开源项目"],
+        }
       ],
-      displayedCount: 8,
+      displayedCount: 9,
     };
   },
   computed: {
     filteredRecommendations() {
-      if (this.activeTag === "all") {
-        return this.recommendations.slice(0, this.displayedCount);
-      }
-      return this.recommendations
-        .filter((item) => item === this.activeTag)
-        .slice(0, this.displayedCount);
+      return this.recommendations.slice(0, this.displayedCount);
     },
     hasMoreItems() {
-      if (this.activeTag === "all") {
-        return this.displayedCount < this.recommendations.length;
-      }
-      const categoryItems = this.recommendations.filter(
-        (item) => item === this.activeTag
-      );
-      return this.displayedCount < categoryItems.length;
+      return this.displayedCount < this.recommendations.length;
     },
   },
   methods: {
-    getCategoryName(categoryId) {
-      const category = this.categories.find((cat) => cat.id === categoryId);
-      return category ? category.name : categoryId;
-    },
     openLink(url) {
       window.open(url, "_blank");
-    },
-    setActiveCategory(tagName) {
-      this.activeTag = tagName;
-      this.displayedCount = 8;
     },
     loadMore() {
       this.displayedCount += 8;
@@ -170,37 +106,6 @@ export default {
 .section-subtitle {
   font-size: 16px;
   color: #cccccc;
-}
-
-/* 分类导航 */
-.category-nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.category-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-  color: #cccccc;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-
-.category-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.category-btn.active {
-  background: rgba(35, 141, 247, 0.2);
-  border-color: #238df7;
-  color: #238df7;
 }
 
 /* 推荐内容网格 */
