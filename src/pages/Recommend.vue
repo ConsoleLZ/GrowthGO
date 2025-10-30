@@ -17,7 +17,7 @@
         >
           <div class="card-header">
             <div class="card-icon">
-              <img :src="item.ico" width="20px" alt="" />
+              <img :src="item.ico" width="80%" alt="" />
             </div>
             <div class="card-title">
               <h3>{{ item.name }}</h3>
