@@ -8,7 +8,7 @@
       </div>
 
       <!-- 分类导航 -->
-      <div class="category-nav">
+      <!-- <div class="category-nav">
         <button
           v-for="item in Object.keys(tagList)"
           :key="item"
@@ -17,7 +17,7 @@
         >
           {{ tagList[item] }}
         </button>
-      </div>
+      </div> -->
 
       <!-- 推荐内容网格 -->
       <div class="recommendations-grid">
