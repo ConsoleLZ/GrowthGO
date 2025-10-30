@@ -17,7 +17,7 @@
         >
           <div class="card-header">
             <div class="card-icon">
-              <img :src="item.icon" width="20px" alt="" />
+              <img :src="item.ico" width="20px" alt="" />
             </div>
             <div class="card-title">
               <h3>{{ item.name }}</h3>
@@ -45,27 +45,20 @@
 </template>
 
 <script>
+import {mainData} from '@/data.js'
 export default {
   metaInfo: {
     title: "推荐",
   },
   data() {
     return {
-      recommendations: [
-        {
-          name: "Vue.js 官方文档",
-          description:
-            "渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。渐进式JavaScript框架，易学易用，性能出色，适用于构建用户界面。",
-          url: "https://vuejs.org",
-          icon: require("@/assets/icon/baidu.svg"),
-          tags: ["前端", "开源项目"],
-        }
-      ],
+      recommendations: mainData.filter(item=>item.recommend),
       displayedCount: 9,
     };
   },
   computed: {
     filteredRecommendations() {
+      console.log(this.recommendations)
       return this.recommendations.slice(0, this.displayedCount);
     },
     hasMoreItems() {
