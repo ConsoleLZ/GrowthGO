@@ -26,22 +26,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.section-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.section-subtitle {
-  font-size: 16px;
-  color: #cccccc;
-}
-</style>
