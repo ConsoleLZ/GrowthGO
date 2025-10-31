@@ -18,10 +18,9 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <div class="dropdown">
-            <el-dropdown-item style="text-align: center;">黄金糕黄金糕黄</el-dropdown-item>
-            <el-dropdown-item style="text-align: center;">狮子头</el-dropdown-item>
-            <el-dropdown-item style="text-align: center;">螺蛳粉</el-dropdown-item>
-            <el-dropdown-item style="text-align: center;">黄金糕</el-dropdown-item>
+            <el-dropdown-item style="text-align: center;" v-for="item in tagsData" :key="item.key"
+              >{{ item.value }}</el-dropdown-item
+            >
           </div>
         </el-dropdown-menu>
       </el-dropdown>
@@ -36,6 +35,26 @@
     <slot></slot>
   </div>
 </template>
+
+<script>
+import { tags } from "@/data.js";
+
+export default {
+  data() {
+    return {
+      tagsData: []
+    }
+  },
+  created() {
+    Object.keys(tags).forEach((key) => {
+      this.tagsData.push({
+        key,
+        value: tags[key],
+      });
+    });
+  },
+};
+</script>
 
 <style scoped>
 .header {

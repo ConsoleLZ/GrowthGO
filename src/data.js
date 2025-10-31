@@ -1,4 +1,4 @@
-const tags = {
+export const tags = {
   frontEnd: "前端",
   openSource: "开源项目",
   community: "社区",
