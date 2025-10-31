@@ -1,4 +1,5 @@
 export const tags = {
+  all: "全部",
   frontEnd: "前端",
   openSource: "开源项目",
   community: "社区",
