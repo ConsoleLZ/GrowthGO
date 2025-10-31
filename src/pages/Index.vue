@@ -230,7 +230,7 @@ export default {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 40px 20px;
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 
   .section-title {
@@ -297,6 +297,7 @@ export default {
     left: 0;
     bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
   }
