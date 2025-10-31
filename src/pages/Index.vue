@@ -295,11 +295,11 @@ export default {
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: 10px;
+    bottom: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
   }
 
   .friend-link {
