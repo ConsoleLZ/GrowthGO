@@ -2,19 +2,32 @@
   <div style="position: relative;min-height: 100vh;">
     <div class="header">
       <g-link to="/" class="item">
-        <img src="@/assets/icon/home.svg" width="18px" alt="">
+        <img src="@/assets/icon/home.svg" width="18px" alt="" />
         <div>首页</div>
       </g-link>
       <g-link to="/recommend/" class="item">
-        <img src="@/assets/icon/thumbs-up.svg" width="18px" alt="">
+        <img src="@/assets/icon/thumbs-up.svg" width="18px" alt="" />
         <div>推荐</div>
       </g-link>
+      <el-dropdown placement="bottom">
+        <div
+          style="display: flex;align-items: center;gap: 3px;color: #ffffff;font-size: 14px;cursor: pointer;"
+        >
+          <img src="@/assets/icon/application-two.svg" width="18px" alt="" />
+          <div>分类</div>
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <div style="width: 200px;">
+            <el-dropdown-item>黄金糕</el-dropdown-item>
+            <el-dropdown-item>狮子头</el-dropdown-item>
+            <el-dropdown-item>螺蛳粉</el-dropdown-item>
+            <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+            <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+          </div>
+        </el-dropdown-menu>
+      </el-dropdown>
       <g-link class="item">
-        <img src="@/assets/icon/application-two.svg" width="18px" alt="">
-        <div>分类</div>
-      </g-link>
-      <g-link class="item">
-        <img src="@/assets/icon/chart-pie-one.svg" width="18px" alt="">
+        <img src="@/assets/icon/chart-pie-one.svg" width="18px" alt="" />
         <div>统计</div>
       </g-link>
     </div>
@@ -39,7 +52,7 @@
   position: relative;
 }
 
-.header>.item {
+.header > .item {
   text-decoration: none;
   transition: color 0.3s ease;
   position: relative;
@@ -53,7 +66,7 @@
 }
 
 /* 下划线动画 - 核心部分 */
-.header>.item::after {
+.header > .item::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -67,50 +80,52 @@
   border-radius: 1px;
 }
 
-.header>.item:hover::after {
+.header > .item:hover::after {
   width: 80%;
 }
 
 @keyframes slide {
   0% {
-    transform:translateX(-25%);
+    transform: translateX(-25%);
   }
   100% {
-    transform:translateX(25%);
+    transform: translateX(25%);
   }
 }
 
 .bg {
-  animation:slide 3s ease-in-out infinite alternate;
+  animation: slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-60deg, #1a1a2e 50%, #0f1626 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
 }
 
 .bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
 }
 
 .bg3 {
-  animation-duration:5s;
+  animation-duration: 5s;
 }
 </style>
 
 <style>
-html,body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #ffffff;
 }
 
-html::-webkit-scrollbar,body::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   display: none;
 }
 
