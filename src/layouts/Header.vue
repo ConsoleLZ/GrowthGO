@@ -24,7 +24,7 @@
           </div>
         </el-dropdown-menu>
       </el-dropdown>
-      <g-link class="item">
+      <g-link to="/statistics" class="item">
         <img src="@/assets/icon/chart-pie-one.svg" width="18px" alt="" />
         <div>统计</div>
       </g-link>
