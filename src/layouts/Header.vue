@@ -19,7 +19,7 @@
         <el-dropdown-menu slot="dropdown">
           <div class="dropdown">
             <el-dropdown-item style="text-align: center;" v-for="item in tagsData" :key="item.key"
-              >{{ item.value }}</el-dropdown-item
+              ><div @click="onGoCategory(item.key)">{{ item.value }}</div></el-dropdown-item
             >
           </div>
         </el-dropdown-menu>
@@ -53,6 +53,11 @@ export default {
       });
     });
   },
+  methods: {
+    onGoCategory(tag){
+      location.href = `/Category/${tag}`
+    }
+  }
 };
 </script>
 
