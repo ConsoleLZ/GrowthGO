@@ -83,8 +83,8 @@ export default {
 }
 
 .card {
-  background-color: rgba(18, 18, 18, 0.3);
-  border-radius: 12px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
   padding: 20px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -94,8 +94,6 @@ export default {
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background-color: rgba(18, 18, 18, 0.5);
 }
 
 .card-header {
@@ -111,7 +109,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
+  background: #e7e7e7;
   border-radius: 8px;
   flex-shrink: 0;
   padding: 8px;
@@ -126,20 +124,11 @@ export default {
   margin: 0 0 6px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #000000;
   line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.card-category {
-  font-size: 11px;
-  color: #238df7;
-  background: rgba(35, 141, 247, 0.1);
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
 }
 
 .card-content {
@@ -150,7 +139,7 @@ export default {
 .description {
   margin: 0;
   font-size: 13px;
-  color: #cccccc;
+  color: #000000;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -167,8 +156,8 @@ export default {
 
 .tag {
   font-size: 10px;
-  color: #999;
-  background: rgba(255, 255, 255, 0.1);
+  color: #000;
+  background: rgba(0, 0, 0, 0.1);
   padding: 2px 6px;
   border-radius: 3px;
 }
@@ -197,19 +186,6 @@ export default {
   .card-grid {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  .category-nav {
-    gap: 5px;
-  }
-
-  .category-btn {
-    font-size: 12px;
-    padding: 6px 12px;
   }
 
   .card {

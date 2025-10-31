@@ -247,19 +247,19 @@ export default {
 
 .nav-card {
   /* background: white; */
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 20px;
-  background-color: rgba(18, 18, 18, 0.2);
+  background-color: #fcfcfc;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 15px;
+  color: #000;
 }
 
 .nav-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 .card-icon {
@@ -283,7 +283,7 @@ export default {
 .card-content p {
   margin: 0;
   font-size: 12px;
-  color: #cccccc;
+  color: #777777;
   line-height: 1.4;
 }
 
