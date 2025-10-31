@@ -364,7 +364,6 @@ export default {
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);
-  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
