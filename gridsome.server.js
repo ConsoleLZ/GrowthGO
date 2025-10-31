@@ -29,7 +29,7 @@ module.exports = function (api) {
 
   api.createPages(({ createPage }) => {
     createPage({
-      path: '/Category/:tag',
+      path: '/category/:tag',
       component: './src/templates/Category.vue'
     })
   })

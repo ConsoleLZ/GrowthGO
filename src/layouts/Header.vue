@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     onGoCategory(tag){
-      location.href = `/Category/${tag}`
+      location.href = `/category/${tag}`
     }
   }
 };
