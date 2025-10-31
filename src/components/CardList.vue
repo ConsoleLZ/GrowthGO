@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="recommendations-grid">
+  <div class="card-container">
+    <div class="card-grid">
       <div
-        class="recommendation-card"
+        class="card"
         v-for="item in filteredRecommendations"
         :key="item.url"
         @click="openLink(item.url)"
@@ -69,15 +69,20 @@ export default {
 </script>
 
 <style scoped>
+.card-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
 /* 推荐内容网格 */
-.recommendations-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 12px;
   margin-bottom: 40px;
 }
 
-.recommendation-card {
+.card {
   background-color: rgba(18, 18, 18, 0.3);
   border-radius: 12px;
   padding: 20px;
@@ -87,7 +92,7 @@ export default {
   flex-direction: column;
 }
 
-.recommendation-card:hover {
+.card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   background-color: rgba(18, 18, 18, 0.5);
@@ -186,7 +191,10 @@ export default {
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-  .recommendations-grid {
+  .card-container {
+    padding: 40px 15px;
+  }
+  .card-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -204,7 +212,7 @@ export default {
     padding: 6px 12px;
   }
 
-  .recommendation-card {
+  .card {
     padding: 16px;
     min-height: 140px;
   }
@@ -225,11 +233,11 @@ export default {
 }
 
 @media (max-width: 480px) {
-  .recommendations-grid {
+  .card-grid {
     grid-template-columns: 1fr;
   }
 
-  .recommendation-card {
+  .card {
     min-height: auto;
   }
 
