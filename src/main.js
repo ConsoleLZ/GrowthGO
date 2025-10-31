@@ -2,7 +2,7 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import HeaderLayout from "~/layouts/Header.vue";
-import { Dropdown, DropdownMenu, DropdownItem } from "element-ui";
+import { Dropdown, DropdownMenu, DropdownItem, Tooltip } from "element-ui";
 
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -11,4 +11,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(Dropdown);
   Vue.use(DropdownMenu);
   Vue.use(DropdownItem);
+  Vue.use(Tooltip);
 }

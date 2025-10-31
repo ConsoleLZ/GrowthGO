@@ -20,11 +20,9 @@
             </div>
           </div>
         </div>
-        <div class="card-content">
-          <p class="description" :title="item.description">
-            {{ item.description }}
-          </p>
-        </div>
+        <el-tooltip :content="item.description" placement="top">
+          <div class="description">{{ item.description }}</div>
+        </el-tooltip>
       </div>
     </div>
 
@@ -37,7 +35,6 @@
 
 <script>
 export default {
-  name: "Card",
   props: {
     cardListData: {
       type: Array,
@@ -90,6 +87,7 @@ export default {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: 115px;
 }
 
 .card:hover {
@@ -146,6 +144,7 @@ export default {
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: all 0.3s ease;
+  width: fit-content;
 }
 
 .card-tags {
