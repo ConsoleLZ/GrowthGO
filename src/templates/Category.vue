@@ -24,6 +24,8 @@ export default {
     filterData() {
       if (this.$route.params.tag == "all") {
         return mainData;
+      }else {
+        return mainData.filter(item=>item.tags.includes(tags[this.$route.params.tag]))
       }
     },
   },
