@@ -17,12 +17,11 @@
           <div>分类</div>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <div style="width: 200px;">
-            <el-dropdown-item>黄金糕</el-dropdown-item>
-            <el-dropdown-item>狮子头</el-dropdown-item>
-            <el-dropdown-item>螺蛳粉</el-dropdown-item>
-            <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-            <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+          <div class="dropdown">
+            <el-dropdown-item style="text-align: center;">黄金糕黄金糕黄</el-dropdown-item>
+            <el-dropdown-item style="text-align: center;">狮子头</el-dropdown-item>
+            <el-dropdown-item style="text-align: center;">螺蛳粉</el-dropdown-item>
+            <el-dropdown-item style="text-align: center;">黄金糕</el-dropdown-item>
           </div>
         </el-dropdown-menu>
       </el-dropdown>
@@ -112,6 +111,29 @@
 
 .bg3 {
   animation-duration: 5s;
+}
+.dropdown {
+  width: 160px;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 4px; /* 垂直滚动条宽度 */
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.dropdown::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>
 
