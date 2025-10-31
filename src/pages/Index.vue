@@ -345,7 +345,7 @@ export default {
   --width-of-input: 36rem;
   --height-of-input: 50px;
   --border-height: 2px;
-  --border-color: #fff;
+  --border-color: #409EFF;
   --border-radius: 30px;
   --after-border-radius: 1px;
   position: relative;
@@ -356,7 +356,7 @@ export default {
   padding-inline: 0.8em;
   border-radius: var(--border-radius);
   transition: border-radius 0.5s ease;
-  background: rgba(0, 0, 0, 0.5);
+  background: #ffffff
 }
 
 .search .icon {
