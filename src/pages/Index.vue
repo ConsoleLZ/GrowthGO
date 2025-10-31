@@ -269,7 +269,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
   border-radius: 10px;
   flex-shrink: 0;
 }
