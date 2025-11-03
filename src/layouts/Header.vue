@@ -2,18 +2,18 @@
   <div style="position: relative;min-height: 100vh;">
     <div class="header">
       <g-link to="/" class="item">
-        <img src="@/assets/icon/home.svg" width="18px" alt="" />
+        <img src="@/assets/icon/home-black.svg" width="18px" alt="" />
         <div>首页</div>
       </g-link>
       <g-link to="/recommend/" class="item">
-        <img src="@/assets/icon/thumbs-up.svg" width="18px" alt="" />
+        <img src="@/assets/icon/thumbs-up-black.svg" width="18px" alt="" />
         <div>推荐</div>
       </g-link>
       <el-dropdown placement="bottom">
         <div
-          style="display: flex;align-items: center;gap: 3px;color: #ffffff;font-size: 14px;cursor: pointer;"
+          style="display: flex;align-items: center;gap: 3px;color: #000;font-size: 14px;cursor: pointer;font-weight: 400;"
         >
-          <img src="@/assets/icon/application-two.svg" width="18px" alt="" />
+          <img src="@/assets/icon/application-two-black.svg" width="18px" alt="" />
           <div>分类</div>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -25,13 +25,10 @@
         </el-dropdown-menu>
       </el-dropdown>
       <g-link to="/statistics" class="item">
-        <img src="@/assets/icon/chart-pie-one.svg" width="18px" alt="" />
+        <img src="@/assets/icon/chart-pie-one-black.svg" width="18px" alt="" />
         <div>统计</div>
       </g-link>
     </div>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
     <slot></slot>
   </div>
 </template>
@@ -85,7 +82,7 @@ export default {
   align-items: center;
   gap: 3px;
   font-size: 14px;
-  color: #fff;
+  color: #000;
 }
 
 /* 下划线动画 - 核心部分 */
@@ -107,35 +104,6 @@ export default {
   width: 80%;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
-}
-
-.bg {
-  animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #1a1a2e 50%, #0f1626 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-
-.bg2 {
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-}
-
-.bg3 {
-  animation-duration: 5s;
-}
 .dropdown {
   width: 160px;
   max-height: 360px;
@@ -167,7 +135,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #ffffff;
+  background-color: #ffffff;
 }
 
 html::-webkit-scrollbar,

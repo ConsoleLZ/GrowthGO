@@ -208,18 +208,20 @@ export default {
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center center;
-  background-color: #ffffff;
+  background-color: #f4f4f4;
 }
 
 .title {
   font-weight: 700;
   font-size: 28px;
+  color: #000000;
 }
 
 .sub-title {
   font-size: 14px;
   text-align: center;
   margin: 0 20px;
+  color: #777777;
 }
 
 /* 新增内容样式 */
@@ -249,7 +251,7 @@ export default {
   /* background: white; */
   border-radius: 10px;
   padding: 20px;
-  background-color: #fcfcfc;
+  background-color: #f4f4f4;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -300,7 +302,7 @@ export default {
 
 .friend-link {
   font-size: 12px;
-  color: #cccccc;
+  color: #000;
   transition: all 0.3s ease;
   padding: 5px 10px;
   border-radius: 4px;
@@ -356,7 +358,7 @@ export default {
   padding-inline: 0.8em;
   border-radius: var(--border-radius);
   transition: border-radius 0.5s ease;
-  background: #ffffff
+  background: #f4f4f4
 }
 
 .search .icon {
@@ -379,7 +381,7 @@ export default {
   padding-inline: 0.5em;
   padding-block: 0.7em;
   border: none;
-  color: #fff;
+  color: #000;
 }
 
 .search:before {
