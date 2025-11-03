@@ -153,7 +153,7 @@ a {
   font-style: normal;
   display: inline-block;
   font-size: 12px;
-  color: #000000;
+  color: #303133;
 }
 .section-header {
   text-align: center;
@@ -169,6 +169,6 @@ a {
 
 .section-subtitle {
   font-size: 16px;
-  color: #777777;
+  color: #909399;
 }
 </style>

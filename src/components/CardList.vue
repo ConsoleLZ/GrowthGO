@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      displayedCount: 9,
+      displayedCount: 10,
     };
   },
   methods: {
@@ -57,7 +57,7 @@ export default {
       window.open(url, "_blank");
     },
     loadMore() {
-      this.displayedCount += 8;
+      this.displayedCount += this.displayedCount;
     },
   },
 };
@@ -135,7 +135,7 @@ export default {
 .description {
   margin: 0;
   font-size: 13px;
-  color: #000;
+  color: #606266;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -155,7 +155,7 @@ export default {
 .load-more {
   text-align: center;
   font-size: 14px;
-  color: #fff;
+  color: #303133;
   cursor: pointer;
   padding: 15px;
   transition: all 0.3s ease;
@@ -164,7 +164,7 @@ export default {
 }
 
 .load-more:hover {
-  background: rgba(35, 141, 247, 0.1);
+  background: #a0cfff;
 }
 
 /* 响应式调整 */

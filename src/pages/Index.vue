@@ -221,7 +221,7 @@ export default {
   font-size: 14px;
   text-align: center;
   margin: 0 20px;
-  color: #777777;
+  color: #909399;
 }
 
 /* 新增内容样式 */
@@ -284,7 +284,7 @@ export default {
 .card-content p {
   margin: 0;
   font-size: 12px;
-  color: #777777;
+  color: #606266;
   line-height: 1.4;
 }
 
@@ -302,7 +302,7 @@ export default {
 
 .friend-link {
   font-size: 12px;
-  color: #000;
+  color: #303133;
   transition: all 0.3s ease;
   padding: 5px 10px;
   border-radius: 4px;
