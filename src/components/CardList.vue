@@ -14,9 +14,7 @@
           <div class="card-title">
             <h3>{{ item.name }}</h3>
             <div style="display: flex;align-items: center;gap: 5px;">
-              <span v-for="tag in item.tags" :key="tag" class="tag">{{
-                tag
-              }}</span>
+                <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{ tag }}</el-tag>
             </div>
           </div>
         </div>
@@ -80,7 +78,7 @@ export default {
 }
 
 .card {
-  background-color: #fcfcfc;
+  background-color: #f4f4f4;
   border-radius: 10px;
   padding: 20px;
   transition: all 0.3s ease;
@@ -107,7 +105,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e7e7e7;
+  background: #ffffff;
   border-radius: 8px;
   flex-shrink: 0;
   padding: 8px;
@@ -137,7 +135,7 @@ export default {
 .description {
   margin: 0;
   font-size: 13px;
-  color: #000000;
+  color: #000;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -151,14 +149,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-}
-
-.tag {
-  font-size: 10px;
-  color: #000;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 2px 6px;
-  border-radius: 3px;
 }
 
 /* 加载更多 */

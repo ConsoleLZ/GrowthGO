@@ -164,11 +164,11 @@ a {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #fff;
+  color: #000;
 }
 
 .section-subtitle {
   font-size: 16px;
-  color: #cccccc;
+  color: #777777;
 }
 </style>
