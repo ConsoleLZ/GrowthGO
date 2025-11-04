@@ -41,12 +41,8 @@
       </el-col>
     </el-row>
 
-    <div
-      style="width: 100vw;display: flex;justify-content: center;align-items: center;margin-top: 30px;"
-    >
-      <div class="charts">
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>
+    <div class="charts">
+      <canvas id="myChart" width="400" height="400"></canvas>
     </div>
   </Header>
 </template>
@@ -61,7 +57,7 @@ query {
 
 <script>
 import { tags, mainData } from "@/data.js";
-import Chart from "chart.js";
+import * as echarts from "echarts";
 
 export default {
   data() {
@@ -113,35 +109,33 @@ export default {
     },
     // 生成统计饼图
     createCharts() {
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [
-            {
-              label: "# of Votes",
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-              ],
-              borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById("myChart"));
+      // 绘制图表
+      myChart.setOption({
+        series: [
+          {
+            type: "pie",
+            data: [
+              {
+                value: 335,
+                name: "直接访问",
+              },
+              {
+                value: 234,
+                name: "联盟广告",
+              },
+              {
+                value: 1548,
+                name: "搜索引擎",
+              },
+              {
+                value: 2,
+                name: "213",
+              },
+            ],
+          },
+        ],
       });
     },
   },
@@ -160,7 +154,8 @@ export default {
 
 <style scoped>
 .charts {
-  width: 500px;
-  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
