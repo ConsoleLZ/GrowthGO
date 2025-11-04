@@ -38,6 +38,14 @@
   </Header>
 </template>
 
+<static-query>
+query {
+  metadata {
+    onlineTime
+  }
+}
+</static-query>
+
 <script>
 import { tags, mainData } from "@/data.js";
 
@@ -52,6 +60,7 @@ export default {
     };
   },
   mounted() {
+    this.isLoadingVisit = true
     const script = document.createElement('script');
     script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
     script.async = true;
@@ -62,7 +71,7 @@ export default {
 
     document.head.appendChild(script);
 
-    const startTime = new Date("2025-11-04 11:26").getTime();
+    const startTime = new Date(this.$static.metadata.onlineTime).getTime();
 
     const updateRuntime = () => {
       const now = new Date().getTime();
