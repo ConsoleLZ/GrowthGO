@@ -27,16 +27,9 @@
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic :value="like ? 521 : 520" title="Feedback">
-            <template slot="suffix">
-              <span @click="like = !like" class="like">
-                <i
-                  class="el-icon-star-on"
-                  style="color:red"
-                  v-show="!!like"
-                ></i>
-                <i class="el-icon-star-off" v-show="!like"></i>
-              </span>
+          <el-statistic title="本站运行时间">
+            <template #formatter>
+              <span>{{ runtimeText }}</span>
             </template>
           </el-statistic>
         </div>
@@ -53,28 +46,48 @@ export default {
     return {
       tagLength: Object.keys(tags).length,
       allLength: mainData.length,
-      isLoadingVisit: true
+      isLoadingVisit: true,
+      runtimeText: '0秒',
+      timer: null
     };
   },
-  mounted(){
-    // 创建 script 元素
-    const script = document.createElement('script')
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
-    script.async = true
+  mounted() {
+    const script = document.createElement('script');
+    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.async = true;
 
-    // 监听脚本加载完成事件
     script.onload = () => {
-      this.isLoadingVisit = false
-    }
+      this.isLoadingVisit = false;
+    };
 
-    document.head.appendChild(script)
+    document.head.appendChild(script);
+
+    const startTime = new Date("2025-11-04 11:26").getTime();
+
+    const updateRuntime = () => {
+      const now = new Date().getTime();
+      const diff = now - startTime;
+
+      if (diff < 0) {
+        this.runtimeText = "尚未开始";
+        return;
+      }
+
+      const seconds = Math.floor(diff / 1000) % 60;
+      const minutes = Math.floor(diff / 60000) % 60;
+      const hours = Math.floor(diff / 3600000) % 24;
+      const days = Math.floor(diff / 86400000);
+
+      this.runtimeText = `${days}天${hours}小时${minutes}分钟${seconds}秒`;
+    };
+
+    updateRuntime();
+    this.timer = setInterval(updateRuntime, 1000);
+  },
+  beforeUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
 };
 </script>
-<style>
-.like {
-  cursor: pointer;
-  font-size: 25px;
-  display: inline-block;
-}
-</style>
