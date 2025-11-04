@@ -23,7 +23,7 @@
               <span
                 v-loading="isLoadingVisit"
                 element-loading-spinner="el-icon-loading"
-                style="left: -8px;"
+                style="left: -8px; position: relative;"
                 id="busuanzi_value_site_pv"
               ></span>
             </template>
@@ -42,7 +42,7 @@
     </el-row>
 
     <div class="charts">
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <canvas id="myChart" width="1000" height="400"></canvas>
     </div>
   </Header>
 </template>
@@ -67,6 +67,7 @@ export default {
       isLoadingVisit: true,
       runtimeText: "0秒",
       timer: null,
+      chartInstance: null, // 存储 ECharts 实例
     };
   },
   methods: {
@@ -81,8 +82,14 @@ export default {
         this.isLoadingVisit = false;
       };
 
+      script.onerror = () => {
+        this.isLoadingVisit = false;
+        console.warn("不蒜子服务加载失败");
+      };
+
       document.head.appendChild(script);
     },
+
     // 本站运行时间的计算
     calculateOnlineTime() {
       const startTime = new Date(this.$static.metadata.onlineTime).getTime();
@@ -107,33 +114,52 @@ export default {
       updateRuntime();
       this.timer = setInterval(updateRuntime, 1000);
     },
+
     // 生成统计饼图
     createCharts() {
-      // 基于准备好的dom，初始化echarts实例
-      var myChart = echarts.init(document.getElementById("myChart"));
-      // 绘制图表
-      myChart.setOption({
+      const chartDom = document.getElementById("myChart");
+      if (!chartDom) return;
+
+      // 初始化 ECharts 实例
+      this.chartInstance = echarts.init(chartDom);
+
+      // 统计标签数量
+      const tagCount = {};
+      mainData.forEach((item) => {
+        item.tags.forEach((tag) => {
+          tagCount[tag] = (tagCount[tag] || 0) + 1;
+        });
+      });
+
+      const chartData = Object.keys(tagCount).map((name) => ({
+        value: tagCount[name],
+        name: name,
+      }));
+
+      // 设置图表选项
+      this.chartInstance.setOption({
         series: [
           {
             type: "pie",
-            data: [
-              {
-                value: 335,
-                name: "直接访问",
+            label: {
+              show: true,
+              formatter: "{b}: {c}",
+              fontSize: 14,
+              fontWeight: "bold",
+              overflow: "break",
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: 14,
+                fontWeight: "bold",
               },
-              {
-                value: 234,
-                name: "联盟广告",
-              },
-              {
-                value: 1548,
-                name: "搜索引擎",
-              },
-              {
-                value: 2,
-                name: "213",
-              },
-            ],
+            },
+            labelLine: {
+              show: true,
+              smooth: 0.3,
+            },
+            data: chartData,
           },
         ],
       });
@@ -145,8 +171,13 @@ export default {
     this.createCharts();
   },
   beforeUnmount() {
+    // 清理定时器
     if (this.timer) {
       clearInterval(this.timer);
+    }
+    // 销毁 ECharts 实例
+    if (this.chartInstance) {
+      this.chartInstance.dispose();
     }
   },
 };
@@ -157,5 +188,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 </style>
