@@ -82,6 +82,7 @@ export default {
   align-items: center;
   gap: 3px;
   font-size: 14px;
+  font-weight: 400;
   color: #000;
 }
 

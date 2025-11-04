@@ -206,7 +206,7 @@ export default {
   height: var(--size);
   border-radius: var(--size);
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: 66%;
   background-position: center center;
   background-color: #ffffff;
 }
