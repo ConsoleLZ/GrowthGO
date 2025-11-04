@@ -169,6 +169,6 @@ a {
 
 .section-subtitle {
   font-size: 16px;
-  color: #909399;
+  color: #303133;
 }
 </style>
