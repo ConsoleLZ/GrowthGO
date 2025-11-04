@@ -215,13 +215,14 @@ export default {
   font-weight: 700;
   font-size: 28px;
   color: #000000;
+  cursor: default;
 }
 
 .sub-title {
   font-size: 14px;
   text-align: center;
   margin: 0 20px;
-  color: #909399;
+  color: #303133;
 }
 
 /* 新增内容样式 */
