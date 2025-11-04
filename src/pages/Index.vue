@@ -348,7 +348,7 @@ export default {
   --width-of-input: 36rem;
   --height-of-input: 50px;
   --border-height: 2px;
-  --border-color: #409EFF;
+  --border-color: #303133;
   --border-radius: 30px;
   --after-border-radius: 1px;
   position: relative;
