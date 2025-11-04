@@ -9,7 +9,7 @@
       <el-col :span="6">
         <div>
           <el-statistic
-            :value="tagLength"
+            :value="tagLength-1"
             title="分类总数"
           ></el-statistic>
         </div>
