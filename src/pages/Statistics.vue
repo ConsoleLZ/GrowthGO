@@ -8,35 +8,19 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <div>
-          <el-statistic
-            :value="tagLength-1"
-            title="分类总数"
-          ></el-statistic>
+          <el-statistic :value="allLength" title="收录总数"></el-statistic>
         </div>
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic title="男女比">
-            <template slot="formatter">
-              456/2
-            </template>
-          </el-statistic>
+          <el-statistic :value="tagLength - 1" title="分类总数"></el-statistic>
         </div>
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic
-            group-separator=","
-            :precision="2"
-            decimal-separator="."
-            :value="value1"
-            :title="title"
-          >
-            <template slot="prefix">
-              <i class="el-icon-s-flag" style="color: red"></i>
-            </template>
-            <template slot="suffix">
-              <i class="el-icon-s-flag" style="color: blue"></i>
+          <el-statistic title="本站访问量">
+            <template #formatter>
+              <span v-loading="isLoadingVisit" element-loading-spinner="el-icon-loading" style="left: -8px;" id="busuanzi_value_site_pv"></span>
             </template>
           </el-statistic>
         </div>
@@ -62,14 +46,29 @@
 </template>
 
 <script>
-import { tags } from "@/data.js";
+import { tags, mainData } from "@/data.js";
 
 export default {
   data() {
     return {
-      tagLength: Object.keys(tags).length
+      tagLength: Object.keys(tags).length,
+      allLength: mainData.length,
+      isLoadingVisit: true
     };
   },
+  mounted(){
+    // 创建 script 元素
+    const script = document.createElement('script')
+    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
+    script.async = true
+
+    // 监听脚本加载完成事件
+    script.onload = () => {
+      this.isLoadingVisit = false
+    }
+
+    document.head.appendChild(script)
+  }
 };
 </script>
 <style>

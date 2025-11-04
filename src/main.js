@@ -11,6 +11,7 @@ import {
   Row,
   Col,
   Statistic,
+  Loading
 } from "element-ui";
 
 export default function(Vue, { router, head, isClient }) {
@@ -25,4 +26,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(Row);
   Vue.use(Col);
   Vue.use(Statistic);
+  Vue.use(Loading);
 }
