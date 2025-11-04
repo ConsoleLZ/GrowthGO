@@ -208,7 +208,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center center;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
 .title {
@@ -251,7 +251,7 @@ export default {
   /* background: white; */
   border-radius: 10px;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -358,7 +358,7 @@ export default {
   padding-inline: 0.8em;
   border-radius: var(--border-radius);
   transition: border-radius 0.5s ease;
-  background: #f4f4f4
+  background: #ffffff
 }
 
 .search .icon {

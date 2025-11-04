@@ -135,7 +135,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #ffffff;
+  background-color: #f3f3f3;
 }
 
 html::-webkit-scrollbar,

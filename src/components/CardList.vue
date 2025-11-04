@@ -78,7 +78,7 @@ export default {
 }
 
 .card {
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
   transition: all 0.3s ease;
