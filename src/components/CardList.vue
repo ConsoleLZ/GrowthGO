@@ -105,7 +105,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: #f4f4f4;
   border-radius: 8px;
   flex-shrink: 0;
   padding: 8px;
