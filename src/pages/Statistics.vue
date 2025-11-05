@@ -6,17 +6,17 @@
     </div>
 
     <el-row :gutter="20">
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div>
           <el-statistic :value="allLength" title="收录总数"></el-statistic>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div>
           <el-statistic :value="tagLength - 1" title="分类总数"></el-statistic>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div>
           <el-statistic title="本站访问量">
             <template #formatter>
@@ -30,7 +30,7 @@
           </el-statistic>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div>
           <el-statistic title="本站运行时间">
             <template #formatter>
@@ -41,8 +41,14 @@
       </el-col>
     </el-row>
 
-    <div class="charts">
-      <canvas id="myChart" width="1000" height="400"></canvas>
+    <div class="charts-container">
+      <div class="chart-wrapper">
+        <div
+          ref="chartRef"
+          class="chart"
+          style="width: 100%; height: 400px;"
+        ></div>
+      </div>
     </div>
   </Header>
 </template>
@@ -67,7 +73,8 @@ export default {
       isLoadingVisit: true,
       runtimeText: "0秒",
       timer: null,
-      chartInstance: null, // 存储 ECharts 实例
+      chartInstance: null,
+      resizeObserver: null,
     };
   },
   methods: {
@@ -115,13 +122,20 @@ export default {
       this.timer = setInterval(updateRuntime, 1000);
     },
 
-    // 生成统计饼图
-    createCharts() {
-      const chartDom = document.getElementById("myChart");
-      if (!chartDom) return;
+    // 初始化图表
+    initChart() {
+      if (!this.$refs.chartRef) return;
 
-      // 初始化 ECharts 实例
-      this.chartInstance = echarts.init(chartDom);
+      // 销毁之前的实例
+      if (this.chartInstance) {
+        this.chartInstance.dispose();
+      }
+
+      // 初始化 ECharts 实例，启用高分辨率渲染
+      this.chartInstance = echarts.init(this.$refs.chartRef, null, {
+        renderer: "canvas",
+        useDirtyRect: false, // 禁用脏矩形优化，提高渲染质量
+      });
 
       // 统计标签数量
       const tagCount = {};
@@ -136,39 +150,95 @@ export default {
         name: name,
       }));
 
+      // 根据屏幕宽度调整图表配置
+      const isMobile = window.innerWidth <= 768;
+
       // 设置图表选项
-      this.chartInstance.setOption({
+      const option = {
+        tooltip: {
+          trigger: "item",
+          formatter: "{a} <br/>{b}: {c} ({d}%)",
+        },
+        // legend: {
+        //   type: "scroll",
+        //   orient: "horizontal",
+        //   right: 'center',
+        //   top: 'top',
+        //   textStyle: {
+        //     fontSize: 12,
+        //   },
+        // },
         series: [
           {
+            name: "标签分布",
             type: "pie",
+            radius: isMobile ? ["40%", "70%"] : ["30%", "60%"],
+            center: isMobile ? ["50%", "40%"] : ["50%", "50%"],
+            avoidLabelOverlap: true,
+            itemStyle: {
+              borderColor: "#fff",
+              borderWidth: 2,
+            },
             label: {
-              show: true,
+              show: !isMobile, // 在移动端隐藏标签
+              position: "outside",
               formatter: "{b}: {c}",
-              fontSize: 14,
+              fontSize: isMobile ? 10 : 14,
               fontWeight: "bold",
-              overflow: "break",
+              overflow: "truncate",
             },
             emphasis: {
               label: {
                 show: true,
-                fontSize: 14,
+                fontSize: isMobile ? 12 : 16,
                 fontWeight: "bold",
               },
+              scale: true,
+              scaleSize: 10,
             },
             labelLine: {
-              show: true,
+              show: !isMobile, // 在移动端隐藏标签线
+              length: isMobile ? 5 : 15,
+              length2: isMobile ? 10 : 20,
               smooth: 0.3,
             },
             data: chartData,
           },
         ],
-      });
+      };
+
+      this.chartInstance.setOption(option);
+
+      // 监听窗口大小变化
+      this.handleResize();
+    },
+
+    // 处理窗口大小变化
+    handleResize() {
+      if (this.chartInstance) {
+        this.chartInstance.resize();
+      }
     },
   },
   mounted() {
     this.loadBusuanzi();
     this.calculateOnlineTime();
-    this.createCharts();
+
+    // 使用nextTick确保DOM已渲染
+    this.$nextTick(() => {
+      this.initChart();
+
+      // 监听窗口大小变化
+      window.addEventListener("resize", this.handleResize);
+
+      // 使用ResizeObserver监听容器大小变化（更精确）
+      if (this.$refs.chartRef) {
+        this.resizeObserver = new ResizeObserver(() => {
+          this.handleResize();
+        });
+        this.resizeObserver.observe(this.$refs.chartRef);
+      }
+    });
   },
   beforeUnmount() {
     // 清理定时器
@@ -179,15 +249,54 @@ export default {
     if (this.chartInstance) {
       this.chartInstance.dispose();
     }
+    // 移除事件监听
+    window.removeEventListener("resize", this.handleResize);
+    // 断开ResizeObserver
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
   },
 };
 </script>
 
 <style scoped>
-.charts {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.charts-container {
+  width: 100%;
   margin-top: 30px;
+  padding: 0 10px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+/* 移动端样式优化 */
+@media (max-width: 768px) {
+  .charts-container {
+    margin-top: 20px;
+    padding: 0 5px;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .el-row {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+  }
+
+  .el-col {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin-bottom: 10px;
+  }
 }
 </style>
