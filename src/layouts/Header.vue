@@ -57,11 +57,16 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     this.handleScroll();
+    this.init();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    // 网站初始化
+    init(){
+      console.log(document.documentElement.clientWidth)
+    },
     onGoCategory(tag){
       location.href = `/category/${tag}`
     },

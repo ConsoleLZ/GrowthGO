@@ -18,6 +18,14 @@ import "~/assets/css/index.css";
 
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
+  if (isClient) {
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const meta = document.createElement("meta");
+      meta.name = "viewport";
+      meta.content = "width=device-width, initial-scale=1";
+      document.head.appendChild(meta);
+    }
+  }
   head.htmlAttrs = { lang: "zh-CN" };
   Vue.component("Header", HeaderLayout);
   Vue.use(Dropdown);
