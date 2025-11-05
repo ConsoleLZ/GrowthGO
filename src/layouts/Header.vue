@@ -1,6 +1,6 @@
 <template>
-  <div style="position: relative;min-height: 100vh;">
-    <div class="header">
+  <div style="position: relative; min-height: 100vh;">
+    <div class="header" :class="{ 'has-background': showHeaderBackground }">
       <g-link to="/" class="item">
         <img src="@/assets/icon/home-black.svg" width="18px" alt="" />
         <div>首页</div>
@@ -11,7 +11,7 @@
       </g-link>
       <el-dropdown placement="bottom">
         <div
-          style="display: flex;align-items: center;gap: 3px;color: #000;font-size: 14px;cursor: pointer;font-weight: 400;"
+          style="display: flex; align-items: center; gap: 3px; color: #000; font-size: 14px; cursor: pointer; font-weight: 400;"
         >
           <img src="@/assets/icon/application-two-black.svg" width="18px" alt="" />
           <div>分类</div>
@@ -39,7 +39,8 @@ import { tags } from "@/data.js";
 export default {
   data() {
     return {
-      tagsData: []
+      tagsData: [],
+      showHeaderBackground: false
     }
   },
   created() {
@@ -50,9 +51,19 @@ export default {
       });
     });
   },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
     onGoCategory(tag){
       location.href = `/category/${tag}`
+    },
+    handleScroll() {
+      this.showHeaderBackground = window.scrollY > 0;
     }
   }
 };
@@ -69,7 +80,14 @@ export default {
   font-weight: 500;
   font-size: 16px;
   cursor: default;
-  position: relative;
+  position: sticky;
+  top: 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.header.has-background {
+  background-color: #fff;
 }
 
 .header > .item {
@@ -86,7 +104,6 @@ export default {
   color: #000;
 }
 
-/* 下划线动画 - 核心部分 */
 .header > .item::after {
   content: "";
   position: absolute;
@@ -95,7 +112,6 @@ export default {
   width: 0;
   height: 2px;
   background-color: #238df7;
-  /* 从中心展开 */
   transform: translateX(-50%);
   transition: width 0.3s ease;
   border-radius: 1px;
@@ -112,21 +128,7 @@ export default {
 }
 
 .dropdown::-webkit-scrollbar {
-  width: 4px; /* 垂直滚动条宽度 */
-}
-
-.dropdown::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.dropdown::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.dropdown::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  display: none;
 }
 </style>
 
@@ -145,7 +147,6 @@ body::-webkit-scrollbar {
 }
 
 a {
-  /* 移除下划线 */
   text-decoration: none;
   color: inherit;
   outline: none;
@@ -156,6 +157,7 @@ a {
   font-size: 12px;
   color: #303133;
 }
+
 .section-header {
   text-align: center;
   margin-bottom: 40px;
