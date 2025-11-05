@@ -30,7 +30,7 @@
       </g-link>
     </div>
     <div class="g-menu">
-      <img src="@/assets/icon/menu.png" width="24px" alt="">
+      <img src="@/assets/icon/expand.png" width="24px" alt="">
     </div>
     <slot></slot>
   </div>
@@ -58,6 +58,8 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
     this.handleScroll();
     this.init();
+
+    window.addEventListener("resize", this.init);
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -65,7 +67,17 @@ export default {
   methods: {
     // 网站初始化
     init(){
-      console.log(document.documentElement.clientWidth)
+      const menuDom = document.querySelector('.g-menu')
+      const headerDom = document.querySelector('.header')
+
+      if(window.innerWidth < 500){
+        // 显示菜单，隐藏导航栏
+        menuDom.style.display = 'flex'
+        headerDom.style.display = 'none'
+      }else {
+        menuDom.style.display = 'none'
+        headerDom.style.display = 'flex'
+      }
     },
     onGoCategory(tag){
       location.href = `/category/${tag}`
@@ -140,17 +152,18 @@ export default {
 }
 
 .g-menu {
-  --size: 36px;
+  --size: 40px;
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);
-  background-color: #d4dbef;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 8px;
-  right: 10px;
+  top: 8px;
+  left: 10px;
   z-index: 9999;
+  cursor: pointer;
 }
 </style>
