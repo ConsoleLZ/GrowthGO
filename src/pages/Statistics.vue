@@ -150,7 +150,6 @@ export default {
         name: name,
       }));
 
-      // 根据屏幕宽度调整图表配置
       const isMobile = window.innerWidth <= 768;
 
       // 设置图表选项
@@ -180,7 +179,7 @@ export default {
               borderWidth: 2,
             },
             label: {
-              show: !isMobile, // 在移动端隐藏标签
+              show: !isMobile,
               position: "outside",
               formatter: "{b}: {c}",
               fontSize: isMobile ? 10 : 14,
@@ -197,7 +196,7 @@ export default {
               scaleSize: 10,
             },
             labelLine: {
-              show: !isMobile, // 在移动端隐藏标签线
+              show: !isMobile,
               length: isMobile ? 5 : 15,
               length2: isMobile ? 10 : 20,
               smooth: 0.3,
@@ -224,21 +223,17 @@ export default {
     this.loadBusuanzi();
     this.calculateOnlineTime();
 
-    // 使用nextTick确保DOM已渲染
-    this.$nextTick(() => {
-      this.initChart();
+    this.initChart();
 
       // 监听窗口大小变化
       window.addEventListener("resize", this.handleResize);
 
-      // 使用ResizeObserver监听容器大小变化（更精确）
       if (this.$refs.chartRef) {
         this.resizeObserver = new ResizeObserver(() => {
           this.handleResize();
         });
         this.resizeObserver.observe(this.$refs.chartRef);
       }
-    });
   },
   beforeUnmount() {
     // 清理定时器
@@ -251,7 +246,6 @@ export default {
     }
     // 移除事件监听
     window.removeEventListener("resize", this.handleResize);
-    // 断开ResizeObserver
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
@@ -277,7 +271,6 @@ export default {
   height: 100%;
 }
 
-/* 移动端样式优化 */
 @media (max-width: 768px) {
   .charts-container {
     margin-top: 20px;
