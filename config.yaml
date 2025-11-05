@@ -31,6 +31,8 @@ friendLink:
     url: https://iconpark.oceanengine.com/
   - name: IconFont
     url: https://www.iconfont.cn/
+  - name: echarts
+    url: https://echarts.apache.org/
   - name: 不蒜子
     url: https://busuanzi.ibruce.info/
   - name: myBlog
