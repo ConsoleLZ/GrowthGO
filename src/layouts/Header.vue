@@ -13,13 +13,22 @@
         <div
           style="display: flex; align-items: center; gap: 3px; color: #000; font-size: 14px; cursor: pointer; font-weight: 400;"
         >
-          <img src="@/assets/icon/application-two-black.svg" width="18px" alt="" />
+          <img
+            src="@/assets/icon/application-two-black.svg"
+            width="18px"
+            alt=""
+          />
           <div>分类</div>
         </div>
         <el-dropdown-menu slot="dropdown">
           <div class="dropdown">
-            <el-dropdown-item style="text-align: center;" v-for="item in tagsData" :key="item.key"
-              ><div @click="onGoCategory(item.key)">{{ item.value }}</div></el-dropdown-item
+            <el-dropdown-item
+              style="text-align: center;"
+              v-for="item in tagsData"
+              :key="item.key"
+              ><div @click="onGoCategory(item.key)">
+                {{ item.value }}
+              </div></el-dropdown-item
             >
           </div>
         </el-dropdown-menu>
@@ -29,9 +38,17 @@
         <div>统计</div>
       </g-link>
     </div>
-    <div class="g-menu">
-      <img src="@/assets/icon/expand.png" width="24px" alt="">
+    <div class="g-menu" @click="visibleDrawer = true">
+      <img src="@/assets/icon/expand.png" width="24px" alt="" />
     </div>
+    <el-drawer
+      title="我是标题"
+      :visible.sync="visibleDrawer"
+      direction="ltr"
+      size="80%"
+    >
+      <span>我来啦!</span>
+    </el-drawer>
     <slot></slot>
   </div>
 </template>
@@ -43,8 +60,9 @@ export default {
   data() {
     return {
       tagsData: [],
-      showHeaderBackground: false
-    }
+      showHeaderBackground: false,
+      visibleDrawer: false
+    };
   },
   created() {
     Object.keys(tags).forEach((key) => {
@@ -55,37 +73,37 @@ export default {
     });
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
     this.handleScroll();
     this.init();
 
     window.addEventListener("resize", this.init);
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     // 网站初始化
-    init(){
-      const menuDom = document.querySelector('.g-menu')
-      const headerDom = document.querySelector('.header')
+    init() {
+      const menuDom = document.querySelector(".g-menu");
+      const headerDom = document.querySelector(".header");
 
-      if(window.innerWidth < 500){
+      if (window.innerWidth < 500) {
         // 显示菜单，隐藏导航栏
-        menuDom.style.display = 'flex'
-        headerDom.style.display = 'none'
-      }else {
-        menuDom.style.display = 'none'
-        headerDom.style.display = 'flex'
+        menuDom.style.display = "flex";
+        headerDom.style.display = "none";
+      } else {
+        menuDom.style.display = "none";
+        headerDom.style.display = "flex";
       }
     },
-    onGoCategory(tag){
-      location.href = `/category/${tag}`
+    onGoCategory(tag) {
+      location.href = `/category/${tag}`;
     },
     handleScroll() {
       this.showHeaderBackground = window.scrollY > 0;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -163,7 +181,7 @@ export default {
   position: fixed;
   top: 8px;
   left: 10px;
-  z-index: 9999;
+  z-index: 999;
   cursor: pointer;
 }
 </style>
