@@ -13,6 +13,7 @@ import {
   Statistic,
   Loading
 } from "element-ui";
+import '~/assets/css/index.css'
 
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
