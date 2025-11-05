@@ -62,6 +62,7 @@
     </div>
 
     <div class="friend-links">
+    <div class="friend-links-wrapper">
       <a
         :href="item.url"
         target="_blank"
@@ -71,6 +72,7 @@
         >{{ item.name }}</a
       >
     </div>
+  </div>
   </Header>
 </template>
 
@@ -289,24 +291,43 @@ export default {
   line-height: 1.4;
 }
 
-/* 友情链接样式 - 修改为普通内容块 */
 .friend-links {
-  width: 100%;
-  position: absolute;
-  left: 0;
+  position: fixed;
   bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  left: 0;
+  right: 0;
+  padding: 8px 0;
+  background: #F0F0F0;
+  z-index: 1000;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 隐藏滚动条轨道（可选） */
+.friend-links::-webkit-scrollbar {
+  display: none;
+}
+
+.friend-links-wrapper {
+  display: inline-block;
+  padding: 0 16px;
+  min-width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .friend-link {
+  display: inline-block;
   font-size: 12px;
   color: #303133;
-  transition: all 0.3s ease;
+  text-decoration: none;
   padding: 5px 10px;
   border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin: 0 7.5px;
 }
 
 .friend-link:hover {
