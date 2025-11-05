@@ -29,6 +29,9 @@
         <div>统计</div>
       </g-link>
     </div>
+    <div class="g-menu">
+      <img src="@/assets/icon/menu.png" width="24px" alt="">
+    </div>
     <slot></slot>
   </div>
 </template>
@@ -129,5 +132,20 @@ export default {
 
 .dropdown::-webkit-scrollbar {
   display: none;
+}
+
+.g-menu {
+  --size: 36px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  background-color: #d4dbef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 8px;
+  right: 10px;
+  z-index: 9999;
 }
 </style>

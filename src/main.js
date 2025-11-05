@@ -11,9 +11,10 @@ import {
   Row,
   Col,
   Statistic,
-  Loading
+  Loading,
+  Drawer,
 } from "element-ui";
-import '~/assets/css/index.css'
+import "~/assets/css/index.css";
 
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -28,4 +29,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(Col);
   Vue.use(Statistic);
   Vue.use(Loading);
+  Vue.use(Drawer);
 }
