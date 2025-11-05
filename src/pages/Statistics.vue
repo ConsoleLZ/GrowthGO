@@ -23,7 +23,6 @@
               <span
                 v-loading="isLoadingVisit"
                 element-loading-spinner="el-icon-loading"
-                style="left: -8px; position: relative;"
                 id="busuanzi_value_site_pv"
               ></span>
             </template>
