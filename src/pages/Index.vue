@@ -11,32 +11,38 @@
         <div class="title">{{ $static.metadata.title }}</div>
       </div>
 
-      <!-- 搜索框和下拉菜单 -->
-      <div class="search-container">
-        <div class="search">
-          <div class="icon" @click="toggleDropdown">
-            <img :src="currentEngine.icon" width="20px" alt="" />
+      <el-popover placement="bottom" width="300" v-model="visiblePopover" trigger="manual">
+        <div>123</div>
+        <div slot="reference">
+          <!-- 搜索框和下拉菜单 -->
+          <div class="search-container">
+            <div class="search">
+              <div class="icon" @click="toggleDropdown">
+                <img :src="currentEngine.icon" width="20px" alt="" />
+              </div>
+              <input
+                class="input"
+                :placeholder="currentEngine.placeholder"
+                type="text"
+                @keyup.enter="performSearch"
+              />
+            </div>
+            <!-- 下拉菜单放在搜索容器外部 -->
+            <div class="dropdown" v-show="showDropdown">
+              <div
+                class="dropdown-item"
+                v-for="engine in searchEngines"
+                :key="engine.name"
+                @click="selectEngine(engine)"
+              >
+                <img :src="engine.icon" width="16px" alt="" />
+                <span>{{ engine.name }}</span>
+              </div>
+            </div>
           </div>
-          <input
-            class="input"
-            :placeholder="currentEngine.placeholder"
-            type="text"
-            @keyup.enter="performSearch"
-          />
         </div>
-        <!-- 下拉菜单放在搜索容器外部 -->
-        <div class="dropdown" v-show="showDropdown">
-          <div
-            class="dropdown-item"
-            v-for="engine in searchEngines"
-            :key="engine.name"
-            @click="selectEngine(engine)"
-          >
-            <img :src="engine.icon" width="16px" alt="" />
-            <span>{{ engine.name }}</span>
-          </div>
-        </div>
-      </div>
+      </el-popover>
+
       <div class="sub-title">{{ $static.metadata.subTitle }}</div>
     </div>
 
@@ -119,6 +125,7 @@ export default {
         },
       ],
       currentEngine: {},
+      visiblePopover: false
     };
   },
   mounted() {
@@ -158,6 +165,7 @@ export default {
       const query = event.target.value.trim();
       if (query) {
         if (this.currentEngine.value === "default") {
+          this.visiblePopover = !this.visiblePopover
           console.log(query);
         } else {
           window.open(

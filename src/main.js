@@ -15,7 +15,8 @@ import {
   Drawer,
   Menu,
   MenuItem,
-  Submenu
+  Submenu,
+  Popover,
 } from "element-ui";
 import "~/assets/css/index.css";
 
@@ -43,5 +44,6 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(Drawer);
   Vue.use(Menu);
   Vue.use(MenuItem);
-  Vue.use(Submenu)
+  Vue.use(Submenu);
+  Vue.use(Popover);
 }
