@@ -18,22 +18,22 @@
         trigger="manual"
         :visible-arrow="false"
       >
-        <div class="popover">
-          <!-- <div class="popover-item">
+        <div class="popover" v-if="searchData.length">
+          <div class="popover-item" v-for="item in searchData" :key="item.url" @click="openLink(item.url)">
             <img
-              src="https://buuoj.cn/themes/buu_core/static/img/favicon.ico"
+              :src="item.ico"
               width="20px"
               alt=""
             />
             <div>
               <div style="font-size: 14px;color: #303133;">
-                标题
+                {{ item.name }}
               </div>
-              <div style="font-size: 12px;color: #909399;">描述信息</div>
+              <div style="font-size: 12px;color: #909399;">{{ item.description }}</div>
             </div>
-          </div> -->
-          <el-empty image="/empty.png" :image-size="64"></el-empty>
+          </div>
         </div>
+        <el-empty v-else image="/empty.png" :image-size="64"></el-empty>
         <div slot="reference">
           <!-- 搜索框和下拉菜单 -->
           <div class="search-container">
@@ -151,6 +151,7 @@ export default {
       ],
       currentEngine: {},
       visiblePopover: false,
+      searchData: []
     };
   },
   mounted() {
@@ -253,7 +254,7 @@ export default {
       if (query) {
         if (this.currentEngine.value === "default") {
           this.visiblePopover = true;
-          console.log(this.searchLocal(query));
+          this.searchData = this.searchLocal(query)
         } else {
           window.open(
             this.currentEngine.searchUrl + encodeURIComponent(query),
