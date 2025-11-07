@@ -18,7 +18,7 @@
         trigger="manual"
         :visible-arrow="false"
       >
-        <div>
+        <div class="popover">
           <div class="popover-item">
             <img
               src="https://buuoj.cn/themes/buu_core/static/img/favicon.ico"
@@ -591,6 +591,11 @@ input:not(:placeholder-shown) ~ .reset {
     right: 0;
     width: 100%;
   }
+}
+
+.popover {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .popover-item {
