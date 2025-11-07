@@ -41,17 +41,36 @@
     <div class="g-menu" @click="visibleDrawer = true">
       <img src="@/assets/icon/expand.png" width="24px" alt="" />
     </div>
+
+    <!-- 移动端适配的导航菜单 -->
     <el-drawer
-      title="我是标题"
+      :title="$static.metadata.title"
       :visible.sync="visibleDrawer"
       direction="ltr"
       size="80%"
     >
-      <span>我来啦!</span>
+      <el-menu>
+        <el-menu-item>
+          <img src="@/assets/icon/home-black.svg" width="18px" style="margin-right: 10px;" alt="" />
+          <span slot="title">首页</span>
+        </el-menu-item>
+        <el-menu-item>
+          <img src="@/assets/icon/thumbs-up-black.svg" width="18px" style="margin-right: 10px;" alt="" />
+          <span slot="title">推荐</span>
+        </el-menu-item>
+      </el-menu>
     </el-drawer>
     <slot></slot>
   </div>
 </template>
+
+<static-query>
+query {
+  metadata {
+    title
+  }
+}
+</static-query>
 
 <script>
 import { tags } from "@/data.js";
@@ -61,7 +80,7 @@ export default {
     return {
       tagsData: [],
       showHeaderBackground: false,
-      visibleDrawer: false
+      visibleDrawer: false,
     };
   },
   created() {

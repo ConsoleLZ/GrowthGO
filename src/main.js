@@ -13,6 +13,9 @@ import {
   Statistic,
   Loading,
   Drawer,
+  Menu,
+  MenuItem,
+  Submenu
 } from "element-ui";
 import "~/assets/css/index.css";
 
@@ -38,4 +41,7 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(Statistic);
   Vue.use(Loading);
   Vue.use(Drawer);
+  Vue.use(Menu);
+  Vue.use(MenuItem);
+  Vue.use(Submenu)
 }
