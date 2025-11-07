@@ -50,7 +50,7 @@
       size="80%"
     >
       <el-menu>
-        <el-menu-item>
+        <el-menu-item index="1">
           <img
             src="@/assets/icon/home-black.svg"
             width="18px"
@@ -59,7 +59,7 @@
           />
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item>
+        <el-menu-item index="2">
           <img
             src="@/assets/icon/thumbs-up-black.svg"
             width="18px"
@@ -68,7 +68,7 @@
           />
           <span slot="title">推荐</span>
         </el-menu-item>
-        <el-submenu>
+        <el-submenu index="3">
           <template slot="title">
             <img
               src="@/assets/icon/application-two-black.svg"
@@ -78,9 +78,7 @@
             />
             <span slot="title">分类</span>
           </template>
-          <el-menu-item>1232</el-menu-item>
-          <el-menu-item>1232</el-menu-item>
-          <el-menu-item>1232</el-menu-item>
+          <el-menu-item v-for="item in tagsData" :key="item.key" @click="onGoCategory(item.key)">{{ item.value }}</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-drawer>

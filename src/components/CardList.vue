@@ -170,7 +170,7 @@ export default {
 /* 响应式调整 */
 @media (max-width: 768px) {
   .card-container {
-    padding: 40px 15px;
+    padding: 0 15px;
   }
   .card-grid {
     grid-template-columns: 1fr;
