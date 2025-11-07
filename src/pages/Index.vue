@@ -18,7 +18,21 @@
         trigger="manual"
         :visible-arrow="false"
       >
-        <div>123</div>
+        <div>
+          <div class="popover-item">
+            <img
+              src="https://buuoj.cn/themes/buu_core/static/img/favicon.ico"
+              width="20px"
+              alt=""
+            />
+            <div>
+              <div style="font-size: 14px;color: #303133;">
+                标题
+              </div>
+              <div style="font-size: 12px;color: #909399;">描述信息</div>
+            </div>
+          </div>
+        </div>
         <div slot="reference">
           <!-- 搜索框和下拉菜单 -->
           <div class="search-container">
@@ -204,16 +218,18 @@ export default {
 
       let miniSearch = new MiniSearch({
         fields: ["name", "description"], // 搜索哪些字段
-        storeFields: ["name", "description", "url"], // 返回哪些字段
+        storeFields: ["name", "description", "url", "ico"], // 返回哪些字段
         tokenize: tokenizer,
       });
 
-      miniSearch.addAll(mainData.map((item, index)=>{
-        return {
-          ...item,
-          id: index
-        }
-      })); // 配置搜索源
+      miniSearch.addAll(
+        mainData.map((item, index) => {
+          return {
+            ...item,
+            id: index,
+          };
+        })
+      ); // 配置搜索源
 
       // 搜索
       miniSearch.autoSuggest(queryValue, {
@@ -223,12 +239,13 @@ export default {
             name: result.name,
             description: result.description,
             url: result.url,
+            ico: result.ico,
           });
           return true;
         },
       });
 
-      return searchData
+      return searchData;
     },
     performSearch(event) {
       const query = event.target.value.trim();
@@ -574,5 +591,18 @@ input:not(:placeholder-shown) ~ .reset {
     right: 0;
     width: 100%;
   }
+}
+
+.popover-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popover-item:hover {
+  background-color: #F0F0F0;
 }
 </style>
