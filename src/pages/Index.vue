@@ -11,7 +11,13 @@
         <div class="title">{{ $static.metadata.title }}</div>
       </div>
 
-      <el-popover placement="bottom-start" width="300" v-model="visiblePopover" trigger="manual" :visible-arrow="false">
+      <el-popover
+        placement="bottom-start"
+        width="300"
+        v-model="visiblePopover"
+        trigger="manual"
+        :visible-arrow="false"
+      >
         <div>123</div>
         <div slot="reference">
           <!-- 搜索框和下拉菜单 -->
@@ -96,6 +102,9 @@ query {
 </static-query>
 
 <script>
+import MiniSearch from "minisearch";
+import { mainData } from "@/data.js";
+
 export default {
   metaInfo: {
     title: "首页",
@@ -126,7 +135,7 @@ export default {
         },
       ],
       currentEngine: {},
-      visiblePopover: false
+      visiblePopover: false,
     };
   },
   mounted() {
@@ -162,12 +171,71 @@ export default {
         this.showDropdown = false;
       }
     },
+    // 模糊搜索本网站内容
+    searchLocal(queryValue) {
+      const searchData = [];
+      const tokenizer = (str) => {
+        // 分词逻辑，返回完整的单词以及单词的部分片段
+        const words = str.match(/[\u4e00-\u9fa5]+|[a-zA-Z0-9]+/g) || [];
+        const subStrings = [];
+
+        words.forEach((word) => {
+          if (/^[a-zA-Z0-9]+$/.test(word)) {
+            // 英文或数字
+            // 生成所有可能的子串
+            for (let i = 1; i <= word.length; i++) {
+              subStrings.push(...word.slice(0, i));
+            }
+          } else {
+            // 中文
+            // 生成所有可能的 n-gram 子串
+            for (let i = 1; i <= word.length; i++) {
+              for (let j = 0; j <= word.length - i; j++) {
+                subStrings.push(word.substring(j, j + i));
+              }
+            }
+          }
+        });
+
+        return subStrings.filter(
+          (value, index, self) => self.indexOf(value) === index
+        ); // 去重
+      };
+
+      let miniSearch = new MiniSearch({
+        fields: ["name", "description"], // 搜索哪些字段
+        storeFields: ["name", "description", "url"], // 返回哪些字段
+        tokenize: tokenizer,
+      });
+
+      miniSearch.addAll(mainData.map((item, index)=>{
+        return {
+          ...item,
+          id: index
+        }
+      })); // 配置搜索源
+
+      // 搜索
+      miniSearch.autoSuggest(queryValue, {
+        filter: (result) => {
+          // 处理搜索结果
+          searchData.push({
+            name: result.name,
+            description: result.description,
+            url: result.url,
+          });
+          return true;
+        },
+      });
+
+      return searchData
+    },
     performSearch(event) {
       const query = event.target.value.trim();
       if (query) {
         if (this.currentEngine.value === "default") {
-          this.visiblePopover = true
-          console.log(query);
+          this.visiblePopover = true;
+          console.log(this.searchLocal(query));
         } else {
           window.open(
             this.currentEngine.searchUrl + encodeURIComponent(query),
