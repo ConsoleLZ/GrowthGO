@@ -98,6 +98,12 @@ export default {
       showDropdown: false,
       searchEngines: [
         {
+          name: "搜索",
+          value: "default",
+          icon: require("@/assets/icon/search.svg"),
+          placeholder: "搜索本网站内容，按回车键确认"
+        },
+        {
           name: "百度",
           value: "baidu",
           icon: require("@/assets/icon/baidu.svg"),
@@ -442,10 +448,6 @@ input:focus {
 input:not(:placeholder-shown) ~ .reset {
   opacity: 1;
   visibility: visible;
-}
-
-.search img {
-  margin-top: 3px;
 }
 
 /* 下拉菜单样式 */
