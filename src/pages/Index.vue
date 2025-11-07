@@ -19,7 +19,7 @@
         :visible-arrow="false"
       >
         <div class="popover">
-          <div class="popover-item">
+          <!-- <div class="popover-item">
             <img
               src="https://buuoj.cn/themes/buu_core/static/img/favicon.ico"
               width="20px"
@@ -31,7 +31,8 @@
               </div>
               <div style="font-size: 12px;color: #909399;">描述信息</div>
             </div>
-          </div>
+          </div> -->
+          <el-empty image="/empty.png" :image-size="64"></el-empty>
         </div>
         <div slot="reference">
           <!-- 搜索框和下拉菜单 -->

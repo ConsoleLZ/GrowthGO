@@ -17,6 +17,7 @@ import {
   MenuItem,
   Submenu,
   Popover,
+  Empty
 } from "element-ui";
 import "~/assets/css/index.css";
 
@@ -46,4 +47,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.use(MenuItem);
   Vue.use(Submenu);
   Vue.use(Popover);
+  Vue.use(Empty);
 }
