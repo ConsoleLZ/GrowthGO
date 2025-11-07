@@ -51,13 +51,37 @@
     >
       <el-menu>
         <el-menu-item>
-          <img src="@/assets/icon/home-black.svg" width="18px" style="margin-right: 10px;" alt="" />
+          <img
+            src="@/assets/icon/home-black.svg"
+            width="18px"
+            style="margin-right: 10px;"
+            alt=""
+          />
           <span slot="title">首页</span>
         </el-menu-item>
         <el-menu-item>
-          <img src="@/assets/icon/thumbs-up-black.svg" width="18px" style="margin-right: 10px;" alt="" />
+          <img
+            src="@/assets/icon/thumbs-up-black.svg"
+            width="18px"
+            style="margin-right: 10px;"
+            alt=""
+          />
           <span slot="title">推荐</span>
         </el-menu-item>
+        <el-submenu>
+          <template slot="title">
+            <img
+              src="@/assets/icon/application-two-black.svg"
+              width="18px"
+              style="margin-right: 10px;"
+              alt=""
+            />
+            <span slot="title">分类</span>
+          </template>
+          <el-menu-item>1232</el-menu-item>
+          <el-menu-item>1232</el-menu-item>
+          <el-menu-item>1232</el-menu-item>
+        </el-submenu>
       </el-menu>
     </el-drawer>
     <slot></slot>
