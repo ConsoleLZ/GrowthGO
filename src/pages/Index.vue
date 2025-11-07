@@ -25,6 +25,7 @@
                 :placeholder="currentEngine.placeholder"
                 type="text"
                 @keyup.enter="performSearch"
+                @blur="visiblePopover = false"
               />
             </div>
             <!-- 下拉菜单放在搜索容器外部 -->
@@ -165,7 +166,7 @@ export default {
       const query = event.target.value.trim();
       if (query) {
         if (this.currentEngine.value === "default") {
-          this.visiblePopover = !this.visiblePopover
+          this.visiblePopover = true
           console.log(query);
         } else {
           window.open(
