@@ -62,17 +62,17 @@
     </div>
 
     <div class="friend-links">
-    <div class="friend-links-wrapper">
-      <a
-        :href="item.url"
-        target="_blank"
-        v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
-        :key="index"
-        class="friend-link"
-        >{{ item.name }}</a
-      >
+      <div class="friend-links-wrapper">
+        <a
+          :href="item.url"
+          target="_blank"
+          v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
+          :key="index"
+          class="friend-link"
+          >{{ item.name }}</a
+        >
+      </div>
     </div>
-  </div>
   </Header>
 </template>
 
@@ -101,7 +101,7 @@ export default {
           name: "搜索",
           value: "default",
           icon: require("@/assets/icon/search.svg"),
-          placeholder: "搜索本网站内容，按回车键确认"
+          placeholder: "搜索本网站内容，按回车键确认",
         },
         {
           name: "百度",
@@ -157,10 +157,14 @@ export default {
     performSearch(event) {
       const query = event.target.value.trim();
       if (query) {
-        window.open(
-          this.currentEngine.searchUrl + encodeURIComponent(query),
-          "_blank"
-        );
+        if (this.currentEngine.value === "default") {
+          console.log(query);
+        } else {
+          window.open(
+            this.currentEngine.searchUrl + encodeURIComponent(query),
+            "_blank"
+          );
+        }
       }
     },
     // 保存搜索引擎到localStorage
@@ -303,7 +307,7 @@ export default {
   left: 0;
   right: 0;
   padding: 8px 0;
-  background: #F0F0F0;
+  background: #f0f0f0;
   z-index: 1000;
   overflow-x: auto;
   overflow-y: hidden;
@@ -386,7 +390,7 @@ export default {
   padding-inline: 0.8em;
   border-radius: var(--border-radius);
   transition: border-radius 0.5s ease;
-  background: #ffffff
+  background: #ffffff;
 }
 
 .search .icon {
