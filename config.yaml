@@ -35,6 +35,8 @@ friendLink:
     url: https://echarts.apache.org/
   - name: 不蒜子
     url: https://busuanzi.ibruce.info/
+  - name: 项目地址
+    url: https://github.com/ConsoleLZ/GrowthGO
   - name: myBlog
     url: https://consolelz.github.io/
 
