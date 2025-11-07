@@ -11,7 +11,7 @@
         <div class="title">{{ $static.metadata.title }}</div>
       </div>
 
-      <el-popover placement="bottom" width="300" v-model="visiblePopover" trigger="manual">
+      <el-popover placement="bottom-start" width="300" v-model="visiblePopover" trigger="manual" :visible-arrow="false">
         <div>123</div>
         <div slot="reference">
           <!-- 搜索框和下拉菜单 -->
