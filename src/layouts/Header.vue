@@ -78,8 +78,22 @@
             />
             <span slot="title">分类</span>
           </template>
-          <el-menu-item v-for="item in tagsData" :key="item.key" @click="onGoCategory(item.key)">{{ item.value }}</el-menu-item>
+          <el-menu-item
+            v-for="item in tagsData"
+            :key="item.key"
+            @click="onGoCategory(item.key)"
+            >{{ item.value }}</el-menu-item
+          >
         </el-submenu>
+        <el-menu-item index="4">
+          <img
+            src="@/assets/icon/chart-pie-one-black.svg"
+            width="18px"
+            style="margin-right: 10px;"
+            alt=""
+          />
+          <span slot="title">统计</span>
+        </el-menu-item>
       </el-menu>
     </el-drawer>
     <slot></slot>
