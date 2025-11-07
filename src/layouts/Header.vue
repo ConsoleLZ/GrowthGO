@@ -50,7 +50,7 @@
       size="80%"
     >
       <el-menu>
-        <el-menu-item index="1">
+        <el-menu-item index="1" @click="goLink('/')">
           <img
             src="@/assets/icon/home-black.svg"
             width="18px"
@@ -59,7 +59,7 @@
           />
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="2" @click="goLink('/recommend')">
           <img
             src="@/assets/icon/thumbs-up-black.svg"
             width="18px"
@@ -85,7 +85,7 @@
             >{{ item.value }}</el-menu-item
           >
         </el-submenu>
-        <el-menu-item index="4">
+        <el-menu-item index="4" @click="goLink('/statistics')">
           <img
             src="@/assets/icon/chart-pie-one-black.svg"
             width="18px"
@@ -158,6 +158,9 @@ export default {
     handleScroll() {
       this.showHeaderBackground = window.scrollY > 0;
     },
+    goLink(url){
+      location.href = url
+    }
   },
 };
 </script>
