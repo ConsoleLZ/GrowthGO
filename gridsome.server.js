@@ -47,10 +47,9 @@ module.exports = function (api) {
       }
     }
 
-    // 写入 _redirects 文件到 dist 目录
+    // 写入 _redirects 文件到 dist 目录(解决部署的时候，动态路由404问题)
     const redirectsContent = redirectRules.join('\n');
     const outputPath = path.join(__dirname, 'dist', '_redirects');
     fs.writeFileSync(outputPath, redirectsContent, 'utf8');
-    console.log('✅ 生成 _redirects 文件用于动态路由重写');
   });
 }
