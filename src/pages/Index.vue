@@ -118,7 +118,7 @@ query {
 
 <script>
 import MiniSearch from "minisearch";
-import { mainData } from "@/data.js";
+import { mainData } from "@/data.mjs";
 
 export default {
   metaInfo: {

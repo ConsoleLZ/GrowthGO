@@ -61,7 +61,7 @@ query {
 </static-query>
 
 <script>
-import { tags, mainData } from "@/data.js";
+import { tags, mainData } from "@/data.mjs";
 import * as echarts from "echarts";
 
 export default {

@@ -109,7 +109,7 @@ query {
 </static-query>
 
 <script>
-import { tags } from "@/data.js";
+import { tags } from "@/data.mjs";
 
 export default {
   data() {

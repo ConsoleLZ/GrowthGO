@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { tags, mainData } from "@/data.js";
+import { tags, mainData } from "@/data.mjs";
 import CardListComp from "@/components/CardList.vue";
 
 export default {

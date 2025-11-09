@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mainData } from "@/data.js";
+import { mainData } from "@/data.mjs";
 import CardListComp from "@/components/CardList.vue";
 export default {
   components: {
