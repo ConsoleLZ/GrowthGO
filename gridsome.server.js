@@ -6,6 +6,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const fs = require('fs');
 const yaml = require('js-yaml');
+const path = require('path')
 
 let configData = null
 // 读取配置文件
@@ -33,4 +34,23 @@ module.exports = function (api) {
       component: './src/templates/Category.vue'
     })
   })
+
+  api.afterBuild(({ redirects }) => {
+    const redirectRules = [];
+
+    for (const rule of redirects) {
+      if (rule.status === 200) {
+        // 将 /category/:tag 转为 /category/* 语法（适用于 Netlify/Fleek/CF Pages）
+        const from = rule.from.replace(/:[a-zA-Z0-9_]+/g, '*');
+        const to = rule.to;
+        redirectRules.push(`${from} ${to} 200`);
+      }
+    }
+
+    // 写入 _redirects 文件到 dist 目录
+    const redirectsContent = redirectRules.join('\n');
+    const outputPath = path.join(__dirname, 'dist', '_redirects');
+    fs.writeFileSync(outputPath, redirectsContent, 'utf8');
+    console.log('✅ 生成 _redirects 文件用于动态路由重写');
+  });
 }
