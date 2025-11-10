@@ -31,6 +31,7 @@
       layout="prev, pager, next"
       :total="cardListData.length"
       :page-size="$static.metadata.paginationValue"
+      hide-on-single-page
       style="display: flex;justify-content: center;"
     >
     </el-pagination>
