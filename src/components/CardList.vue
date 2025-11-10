@@ -3,7 +3,7 @@
     <div class="card-grid">
       <div
         class="card"
-        v-for="item in filteredRecommendations"
+        v-for="item in cardListData"
         :key="item.url"
         @click="openLink(item.url)"
       >
@@ -23,13 +23,16 @@
         </el-tooltip>
       </div>
     </div>
-
-    <!-- 加载更多 -->
-    <div class="load-more" v-if="hasMoreItems" @click="loadMore">
-      加载更多<span>↓</span>
-    </div>
   </div>
 </template>
+
+<static-query>
+query {
+  metadata {
+    paginationValue
+  }
+}
+</static-query>
 
 <script>
 export default {
@@ -39,25 +42,17 @@ export default {
       default: [],
     },
   },
-  computed: {
-    filteredRecommendations() {
-      return this.cardListData.slice(0, this.displayedCount);
-    },
-    hasMoreItems() {
-      return this.displayedCount < this.cardListData.length;
-    },
-  },
   data() {
     return {
-      displayedCount: 10,
+      
     };
+  },
+  mounted(){
+    console.log(this.$static.metadata.paginationValue)
   },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
-    },
-    loadMore() {
-      this.displayedCount += this.displayedCount;
     },
   },
 };
