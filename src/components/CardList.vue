@@ -77,7 +77,6 @@ export default {
       const end = start + paginationValue;
 
       this.paginationData = this.cardListData.slice(start, end);
-      console.log(this.paginationData);
     },
     onChangePage(page) {
       this.page = page;
