@@ -3,7 +3,7 @@
     <div class="card-grid">
       <div
         class="card"
-        v-for="item in cardListData"
+        v-for="item in paginationData"
         :key="item.url"
         @click="openLink(item.url)"
       >
@@ -55,10 +55,19 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      page: null, // 当前的页数
+      paginationData: null // 分页的后的数据集合
+    };
   },
-  mounted() {
-    console.log(this.$static.metadata.paginationValue);
+  created(){
+    this.page = this.$route.query.page ? parseInt(this.$route.query.page, 10) : 1;
+
+    const paginationValue = this.$static.metadata.paginationValue
+    const start = (this.page - 1) * paginationValue
+    const end = start + paginationValue
+    
+    this.paginationData = this.cardListData.slice(start, end)
   },
   methods: {
     openLink(url) {
