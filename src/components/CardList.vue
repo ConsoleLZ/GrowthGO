@@ -29,7 +29,7 @@
     <el-pagination
       background
       layout="prev, pager, next"
-      :total="cardListData.length"
+      :total="total"
       :page-size="$static.metadata.paginationValue"
       hide-on-single-page
       style="display: flex;justify-content: center;"
@@ -59,6 +59,7 @@ export default {
     return {
       page: 1, // 当前的页数
       paginationData: [], // 分页的后的数据集合
+      total: 0
     };
   },
   created() {
@@ -66,6 +67,9 @@ export default {
       ? parseInt(this.$route.query.page, 10)
       : 1;
     this.init();
+  },
+  mounted(){
+    this.total = this.cardListData?.length
   },
   methods: {
     openLink(url) {
