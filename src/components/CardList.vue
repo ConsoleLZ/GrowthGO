@@ -14,7 +14,9 @@
           <div class="card-title">
             <h3>{{ item.name }}</h3>
             <div style="display: flex;align-items: center;gap: 5px;">
-                <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{ tag }}</el-tag>
+              <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{
+                tag
+              }}</el-tag>
             </div>
           </div>
         </div>
@@ -23,6 +25,14 @@
         </el-tooltip>
       </div>
     </div>
+
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="1000"
+      style="display: flex;justify-content: center;"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -43,12 +53,10 @@ export default {
     },
   },
   data() {
-    return {
-      
-    };
+    return {};
   },
-  mounted(){
-    console.log(this.$static.metadata.paginationValue)
+  mounted() {
+    console.log(this.$static.metadata.paginationValue);
   },
   methods: {
     openLink(url) {
