@@ -33,6 +33,7 @@
       :page-size="$static.metadata.paginationValue"
       hide-on-single-page
       style="display: flex;justify-content: center;"
+      @current-change="onChangePage"
     >
     </el-pagination>
   </div>
@@ -57,21 +58,30 @@ export default {
   data() {
     return {
       page: null, // 当前的页数
-      paginationData: null // 分页的后的数据集合
+      paginationData: null, // 分页的后的数据集合
     };
   },
-  created(){
-    this.page = this.$route.query.page ? parseInt(this.$route.query.page, 10) : 1;
-
-    const paginationValue = this.$static.metadata.paginationValue
-    const start = (this.page - 1) * paginationValue
-    const end = start + paginationValue
-    
-    this.paginationData = this.cardListData.slice(start, end)
+  created() {
+    this.page = this.$route.query.page
+      ? parseInt(this.$route.query.page, 10)
+      : 1;
+    this.init();
   },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
+    },
+    init() {
+      const paginationValue = this.$static.metadata.paginationValue;
+      const start = (this.page - 1) * paginationValue;
+      const end = start + paginationValue;
+
+      this.paginationData = this.cardListData.slice(start, end);
+      console.log(this.paginationData);
+    },
+    onChangePage(page) {
+      this.page = page;
+      this.init();
     },
   },
 };
