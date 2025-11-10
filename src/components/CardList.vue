@@ -57,8 +57,8 @@ export default {
   },
   data() {
     return {
-      page: null, // 当前的页数
-      paginationData: null, // 分页的后的数据集合
+      page: 1, // 当前的页数
+      paginationData: [], // 分页的后的数据集合
     };
   },
   created() {
