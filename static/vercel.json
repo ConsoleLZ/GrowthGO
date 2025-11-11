@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/category/*", "destination": "/category/_tag.html" }
+  ]
+}
