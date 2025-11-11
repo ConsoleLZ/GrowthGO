@@ -1,5 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/category/*", "destination": "/category/_tag.html" }
+  "redirects": [
+    { "source": "/category/*", "destination": "/category/_tag.html", "permanent": false }
   ]
 }
