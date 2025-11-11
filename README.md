@@ -36,6 +36,17 @@ npm run dev
 
 在浏览器中访问：http://localhost:8080/
 
+
+## 自定义内容
+作为普通使用者，你只需要关注如下几个文件：
+1. config.yaml（一些网站的配置内容，标题、副标题、头像等）
+
+2. src/data.mjs（网站卡片的所有数据写在这里）
+tags变量里面写分类的内容，会自动为你分配路由，mainData是数据，根据我给的示例进行修改即可，注意不要更改字段名
+
+3. gridsome.config.js（网站的SEO，更多配置需要自己去查看gridsome的官网）
+
+
 ## 部署
 目前一共支持的部署方式有：
 1. Cloudflare（免费）
