@@ -184,7 +184,7 @@ export default {
 }
 
 .header.has-background {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .header > .item {
