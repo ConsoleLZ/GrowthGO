@@ -202,5 +202,5 @@ http {
 4. [IconFont](https://www.iconfont.cn/)
 5. [不蒜子](https://busuanzi.ibruce.info/)
 6. [Echarts](https://echarts.apache.org/)
-7. 感谢[Cloudflare](https://dash.cloudflare.com/)提供免费静态页面部署
+7. 感谢[Cloudflare](https://cloudflare.com/)提供免费静态页面部署
 8. [Vercel](https://vercel.com/)
