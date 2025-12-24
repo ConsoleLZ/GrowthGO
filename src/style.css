@@ -7,3 +7,7 @@
 	font-family: var(--px-font);
 	line-height: var(--px-line-height);
 }
+
+input:focus-visible {
+	outline: none !important;
+}
