@@ -3,15 +3,10 @@
 		<px-avatar :size="40">
 			<px-image src="/favicon.ico" alt="Image"></px-image>
 		</px-avatar>
-		<div class="menu">
-			<div>首页</div>
-			<div>推荐</div>
-			<div>标签</div>
-		</div>
-
+		<div>我的宝物</div>
 		<px-input placeholder="Please input">
 			<template #prefix>
-				<img src="@/assets/images/search.svg" width="18px" alt="">
+				<img src="@/assets/images/search.svg" width="18px" alt="" />
 			</template>
 		</px-input>
 	</div>

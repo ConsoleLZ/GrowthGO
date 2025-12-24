@@ -1,18 +1,6 @@
 .header {
     padding: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.header .menu {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-}
-
-.header .menu > div {
-    cursor: pointer;
+    gap: 15px;
 }
