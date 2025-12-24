@@ -7,7 +7,7 @@
 			<div>我的宝物</div>
 			<px-input placeholder="查找我的宝物">
 				<template #prefix>
-					<img src="@/assets/images/search.svg" width="18px" alt="" />
+					<img src="@/assets/images/search.png" width="18px" alt="" />
 				</template>
 			</px-input>
 		</div>
