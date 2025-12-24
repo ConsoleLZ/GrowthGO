@@ -4,7 +4,7 @@
 			<px-avatar :size="40">
 				<px-image src="/favicon.ico" alt="Image"></px-image>
 			</px-avatar>
-			<div>我的宝物</div>
+			<div>聚宝盆</div>
 			<px-input placeholder="查找我的宝物">
 				<template #prefix>
 					<img src="@/assets/images/search.png" width="18px" alt="" />
