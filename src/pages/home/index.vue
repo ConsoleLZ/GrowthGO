@@ -10,7 +10,9 @@
 		</div>
 
 		<px-input placeholder="Please input">
-			<template #prefix>$</template>
+			<template #prefix>
+				<img src="@/assets/images/search.svg" width="18px" alt="">
+			</template>
 		</px-input>
 	</div>
 </template>
