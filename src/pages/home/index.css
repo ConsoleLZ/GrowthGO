@@ -1,6 +1,19 @@
 .header {
     padding: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+.header > .left, .header > .right{
+    display: flex;
+    align-items: center;
+}
+
+.header > .left {
     gap: 15px;
+}
+
+.header > .right {
+    gap: 20px;
 }
