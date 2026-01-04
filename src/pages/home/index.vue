@@ -29,15 +29,15 @@
 		</div>
 	</div>
 	<px-checkbox
-		variant="retro"
 		v-model="tagsAll"
 		@change="onSelectAllChange"
 		:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
 	>
-		Select All
+		全部
 	</px-checkbox>
 	<br />
-	<px-checkbox-group v-model="selectTags" @change="onSelectChange" variant="retro">
+	<br />
+	<px-checkbox-group v-model="selectTags" @change="onSelectChange">
 		<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
 			{{ tags[key] }}
 		</px-checkbox>
