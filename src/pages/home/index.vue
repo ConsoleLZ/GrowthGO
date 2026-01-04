@@ -16,11 +16,32 @@
 			<div>|</div>
 			<div>宝物分类：20</div>
 			<div>|</div>
-			<div>有<span>99999</span>个勇士参观了这里</div>
+			<div>
+				有
+				<span>99999</span>
+				个勇士参观了这里
+			</div>
 			<div>|</div>
-			<div>站点已运行<span>45天10小时35分钟30秒</span></div>
+			<div>
+				站点已运行
+				<span>45天10小时35分钟30秒</span>
+			</div>
 		</div>
 	</div>
+	<px-checkbox
+		variant="retro"
+		v-model="tagsAll"
+		@change="onSelectAllChange"
+		:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
+	>
+		Select All
+	</px-checkbox>
+	<br />
+	<px-checkbox-group v-model="selectTags" @change="onSelectChange" variant="retro">
+		<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
+			{{ tags[key] }}
+		</px-checkbox>
+	</px-checkbox-group>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
