@@ -10,6 +10,25 @@
 					<img src="@/assets/images/search.png" width="18px" alt="" />
 				</template>
 			</px-input>
+			<px-popover trigger="click">
+				<px-button>Click</px-button>
+				<template #content>
+					<px-checkbox
+						v-model="tagsAll"
+						@change="onSelectAllChange"
+						:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
+					>
+						全部
+					</px-checkbox>
+					<br />
+					<br />
+					<px-checkbox-group v-model="selectTags" @change="onSelectChange">
+						<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
+							{{ tags[key] }}
+						</px-checkbox>
+					</px-checkbox-group>
+				</template>
+			</px-popover>
 		</div>
 		<div class="right">
 			<div>宝物：45</div>
@@ -28,20 +47,6 @@
 			</div>
 		</div>
 	</div>
-	<px-checkbox
-		v-model="tagsAll"
-		@change="onSelectAllChange"
-		:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
-	>
-		全部
-	</px-checkbox>
-	<br />
-	<br />
-	<px-checkbox-group v-model="selectTags" @change="onSelectChange">
-		<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
-			{{ tags[key] }}
-		</px-checkbox>
-	</px-checkbox-group>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
