@@ -11,7 +11,7 @@
 				</template>
 			</px-input>
 			<px-popover trigger="click">
-				<px-button>Click</px-button>
+				<px-button>筛选</px-button>
 				<template #content>
 					<px-checkbox
 						v-model="tagsAll"
@@ -23,9 +23,11 @@
 					<br />
 					<br />
 					<px-checkbox-group v-model="selectTags" @change="onSelectChange">
-						<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
-							{{ tags[key] }}
-						</px-checkbox>
+						<div class="checkbox-group">
+							<px-checkbox style="width: 100px;" v-for="key in Object.keys(tags)" :key="key" :value="key">
+								{{ tags[key] }}
+							</px-checkbox>
+						</div>
 					</px-checkbox-group>
 				</template>
 			</px-popover>

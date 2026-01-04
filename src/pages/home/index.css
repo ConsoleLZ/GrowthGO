@@ -17,3 +17,10 @@
 .header > .right {
     gap: 20px;
 }
+
+.checkbox-group {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
