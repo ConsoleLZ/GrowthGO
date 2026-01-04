@@ -13,22 +13,24 @@
 			<px-popover trigger="click">
 				<px-button>筛选</px-button>
 				<template #content>
-					<px-checkbox
-						v-model="tagsAll"
-						@change="onSelectAllChange"
-						:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
-					>
-						全部
-					</px-checkbox>
-					<br />
-					<br />
-					<px-checkbox-group v-model="selectTags" @change="onSelectChange">
-						<div class="checkbox-group">
-							<px-checkbox style="width: 100px;" v-for="key in Object.keys(tags)" :key="key" :value="key">
-								{{ tags[key] }}
-							</px-checkbox>
-						</div>
-					</px-checkbox-group>
+					<div style="padding: 5px;">
+						<px-checkbox
+							v-model="tagsAll"
+							@change="onSelectAllChange"
+							:indeterminate="selectTags.length > 0 && selectTags.length < Object.keys(tags).length"
+						>
+							全部
+						</px-checkbox>
+						<br />
+						<br />
+						<px-checkbox-group v-model="selectTags" @change="onSelectChange">
+							<div class="checkbox-group">
+								<px-checkbox v-for="key in Object.keys(tags)" :key="key" :value="key">
+									{{ tags[key] }}
+								</px-checkbox>
+							</div>
+						</px-checkbox-group>
+					</div>
 				</template>
 			</px-popover>
 		</div>

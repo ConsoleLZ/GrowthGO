@@ -4,8 +4,8 @@ import { tags } from './constants';
 export default defineComponent({
 	setup() {
 		const state = reactive({
-			tagsAll: false,
-			selectTags: [] // 选中的标签
+			tagsAll: true,
+			selectTags: Object.keys(tags) // 选中的标签
 		});
 
 		const methods = {

@@ -19,8 +19,8 @@
 }
 
 .checkbox-group {
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
 }
