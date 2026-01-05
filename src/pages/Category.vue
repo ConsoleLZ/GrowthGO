@@ -1,6 +1,6 @@
 <template>
   <Header>
-    <div style="padding: 10px;">
+    <CardListComp :cardListData="cardData">
       <el-checkbox
         :indeterminate="isIndeterminate"
         v-model="checkAll"
@@ -16,10 +16,7 @@
           >{{ tagsOptions[tag] }}</el-checkbox
         >
       </el-checkbox-group>
-      <br>
-      <br>
-      <CardListComp :cardListData="cardData" />
-    </div>
+    </CardListComp>
   </Header>
 </template>
 
@@ -30,7 +27,7 @@ import CardListComp from "@/components/CardList.vue";
 
 export default {
   components: {
-    CardListComp
+    CardListComp,
   },
   data() {
     return {
@@ -38,7 +35,7 @@ export default {
       tagsSelect: Object.keys(tags),
       tagsOptions: tags,
       isIndeterminate: false,
-      cardData: mainData
+      cardData: mainData,
     };
   },
   methods: {

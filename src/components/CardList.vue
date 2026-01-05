@@ -1,5 +1,8 @@
 <template>
   <div class="card-container">
+    <div style="margin-bottom: 35px;">
+      <slot></slot>
+    </div>
     <div class="card-grid">
       <div
         class="card"
