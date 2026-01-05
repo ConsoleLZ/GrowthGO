@@ -1,6 +1,6 @@
 <template>
   <Header>
-    <CardListComp :cardListData="cardData">
+    <CardListComp :cardListData="filteredCardData">
       <el-checkbox
         :indeterminate="isIndeterminate"
         v-model="checkAll"
@@ -35,19 +35,31 @@ export default {
       tagsSelect: Object.keys(tags),
       tagsOptions: tags,
       isIndeterminate: false,
-      cardData: mainData,
+      cardData: mainData, // 原始数据
     };
+  },
+  computed: {
+    filteredCardData() {
+      if (this.tagsSelect.length === 0) {
+        return [];
+      }
+      return this.cardData.filter((item) =>
+        item.tags.some((tag) => {
+          return this.tagsSelect.includes(Object.keys(tags).find((item) => tags[item] === tag));
+        })
+      );
+    },
   },
   methods: {
     handleCheckAllChange(val) {
-      this.tagsSelect = val ? Object.keys(tags) : [];
+      this.tagsSelect = val ? Object.keys(this.tagsOptions) : [];
       this.isIndeterminate = false;
     },
     handleCheckedTagChange(value) {
-      let checkedCount = value.length;
-      this.checkAll = checkedCount === Object.keys(this.tagsOptions).length;
-      this.isIndeterminate =
-        checkedCount > 0 && checkedCount < Object.keys(this.tagsOptions).length;
+      const total = Object.keys(this.tagsOptions).length;
+      const checkedCount = value.length;
+      this.checkAll = checkedCount === total;
+      this.isIndeterminate = checkedCount > 0 && checkedCount < total;
     },
   },
 };
