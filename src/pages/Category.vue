@@ -37,7 +37,12 @@ export default {
       this.tagsSelect = val ? Object.keys(tags) : [];
       this.isIndeterminate = false;
     },
-    handleCheckedTagChange(value) {},
+    handleCheckedTagChange(value) {
+      let checkedCount = value.length;
+      this.checkAll = checkedCount === Object.keys(this.tagsOptions).length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < Object.keys(this.tagsOptions).length;
+    },
   },
 };
 </script>
