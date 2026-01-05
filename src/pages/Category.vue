@@ -16,6 +16,8 @@
           >{{ tagsOptions[tag] }}</el-checkbox
         >
       </el-checkbox-group>
+      <br>
+      <br>
     </CardListComp>
   </Header>
 </template>
