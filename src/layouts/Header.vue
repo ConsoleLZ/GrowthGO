@@ -48,23 +48,15 @@
           />
           <span slot="title">推荐</span>
         </el-menu-item>
-        <el-submenu index="3">
-          <template slot="title">
-            <img
-              src="@/assets/icon/application-two-black.svg"
-              width="18px"
-              style="margin-right: 10px;"
-              alt=""
-            />
-            <span slot="title">分类</span>
-          </template>
-          <el-menu-item
-            v-for="item in tagsData"
-            :key="item.key"
-            @click="onGoCategory(item.key)"
-            >{{ item.value }}</el-menu-item
-          >
-        </el-submenu>
+        <el-menu-item index="3" @click="goLink('/category')">
+          <img
+            src="@/assets/icon/application-two-black.svg"
+            width="18px"
+            style="margin-right: 10px;"
+            alt=""
+          />
+          <span slot="title">分类</span>
+        </el-menu-item>
         <el-menu-item index="4" @click="goLink('/statistics')">
           <img
             src="@/assets/icon/chart-pie-one-black.svg"
