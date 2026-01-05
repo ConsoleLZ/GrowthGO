@@ -162,19 +162,6 @@ export default {
   flex: 1;
 }
 
-.description {
-  margin: 0;
-  font-size: 13px;
-  color: #303133;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  width: fit-content;
-}
-
 .card-tags {
   display: flex;
   flex-wrap: wrap;

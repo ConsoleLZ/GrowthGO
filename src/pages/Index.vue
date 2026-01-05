@@ -29,7 +29,7 @@
               <div style="font-size: 14px;color: #303133;">
                 {{ item.name }}
               </div>
-              <div style="font-size: 12px;color: #909399;">{{ item.description }}</div>
+              <div class="description" style="color: #909399;">{{ item.description }}</div>
             </div>
           </div>
         </div>
