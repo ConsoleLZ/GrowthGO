@@ -16,20 +16,29 @@
           >{{ tagsOptions[tag] }}</el-checkbox
         >
       </el-checkbox-group>
+      <br>
+      <br>
+      <CardListComp :cardListData="cardData" />
     </div>
   </Header>
 </template>
 
 <script>
 import { tags } from "@/data.mjs";
+import { mainData } from "@/data.mjs";
+import CardListComp from "@/components/CardList.vue";
 
 export default {
+  components: {
+    CardListComp
+  },
   data() {
     return {
       checkAll: true,
       tagsSelect: Object.keys(tags),
       tagsOptions: tags,
       isIndeterminate: false,
+      cardData: mainData
     };
   },
   methods: {
