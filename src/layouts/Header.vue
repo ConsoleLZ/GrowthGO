@@ -9,30 +9,10 @@
         <img src="@/assets/icon/thumbs-up-black.svg" width="18px" alt="" />
         <div>推荐</div>
       </g-link>
-      <el-dropdown placement="bottom">
-        <div
-          style="display: flex; align-items: center; gap: 3px; color: #000; font-size: 14px; cursor: pointer; font-weight: 400;"
-        >
-          <img
-            src="@/assets/icon/application-two-black.svg"
-            width="18px"
-            alt=""
-          />
-          <div>分类</div>
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <div class="dropdown">
-            <el-dropdown-item
-              style="text-align: center;"
-              v-for="item in tagsData"
-              :key="item.key"
-              ><div @click="onGoCategory(item.key)">
-                {{ item.value }}
-              </div></el-dropdown-item
-            >
-          </div>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <g-link to="/category/" class="item">
+        <img src="@/assets/icon/application-two-black.svg" width="18px" alt="" />
+        <div>分类</div>
+      </g-link>
       <g-link to="/statistics" class="item">
         <img src="@/assets/icon/chart-pie-one-black.svg" width="18px" alt="" />
         <div>统计</div>

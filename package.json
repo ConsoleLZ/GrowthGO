@@ -2,7 +2,6 @@
   "name": "GrowthGO",
   "private": true,
   "scripts": {
-    "build-nginx": "cross-env GENERATE_NGINX_RULES=true gridsome build",
     "build": "gridsome build",
     "dev": "gridsome develop",
     "explore": "gridsome explore"
