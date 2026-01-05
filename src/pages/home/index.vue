@@ -51,6 +51,17 @@
 			</div>
 		</div>
 	</div>
+	<div class="card-list">
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+		<div class="card"></div>
+	</div>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
