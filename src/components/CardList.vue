@@ -24,6 +24,9 @@
         <el-tooltip :content="item.description" placement="top">
           <div class="description">{{ item.description }}</div>
         </el-tooltip>
+        <div class="card-like" v-if="item.recommend">
+          <img src="@/assets/images/like.png" width="24px" alt="">
+        </div>
       </div>
     </div>
 
@@ -120,6 +123,13 @@ export default {
   display: flex;
   flex-direction: column;
   height: 115px;
+  position: relative;
+}
+
+.card-like {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .card-header {
