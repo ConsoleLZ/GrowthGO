@@ -180,7 +180,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(35, 141, 247, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: var(--radius-xl);
   flex-shrink: 0;
   padding: var(--space-3);
@@ -188,7 +188,7 @@ export default {
 }
 
 .card:hover .card-icon {
-  background-color: rgba(35, 141, 247, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   transform: scale(1.05);
 }
 
@@ -217,7 +217,7 @@ export default {
 .card-tag {
   font-size: var(--text-xs) !important;
   border-radius: var(--radius-full) !important;
-  background-color: rgba(35, 141, 247, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
   color: var(--primary) !important;
   border: none !important;
 }

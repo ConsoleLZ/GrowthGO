@@ -321,7 +321,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--background) 0%, #f0f9ff 100%);
+  background: linear-gradient(135deg, var(--background) 0%, #f0f0f0 100%);
   position: relative;
   overflow: hidden;
 }
@@ -333,7 +333,7 @@ export default {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(35, 141, 247, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
   animation: float 20s ease-in-out infinite;
 }
 
@@ -615,13 +615,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(35, 141, 247, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
   transition: all var(--transition-normal);
 }
 
 .quick-card:hover .card-icon {
-  background-color: rgba(35, 141, 247, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   transform: scale(1.1);
 }
 
@@ -677,7 +677,7 @@ export default {
 .friend-link:hover {
   color: var(--primary);
   border-color: var(--primary);
-  background-color: rgba(35, 141, 247, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   transform: translateY(-1px);
 }
 

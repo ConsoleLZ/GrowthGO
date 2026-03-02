@@ -233,7 +233,7 @@ export default {
 
 .nav-item:hover {
   color: var(--primary);
-  background-color: rgba(35, 141, 247, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   transform: translateY(-1px);
 }
 
