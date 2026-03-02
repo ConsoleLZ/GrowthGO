@@ -14,7 +14,7 @@
           <div class="stat-card reveal-item" data-delay="0.1">
             <div class="stat-icon">
               <img
-                src="@/assets/icon/application-two-black.svg"
+                src="@/assets/icon/all.svg"
                 width="24px"
                 alt=""
               />
@@ -29,7 +29,7 @@
           <div class="stat-card reveal-item" data-delay="0.2">
             <div class="stat-icon">
               <img
-                src="@/assets/icon/chart-pie-one-black.svg"
+                src="@/assets/icon/application-two-black.svg"
                 width="24px"
                 alt=""
               />
@@ -43,7 +43,7 @@
           <!-- 本站访问量 -->
           <div class="stat-card reveal-item" data-delay="0.3">
             <div class="stat-icon">
-              <img src="@/assets/icon/baidu.svg" width="24px" alt="" />
+              <img src="@/assets/icon/eye.svg" width="24px" alt="" />
             </div>
             <div class="stat-content">
               <h3 class="stat-title">本站访问量</h3>
@@ -61,7 +61,7 @@
           <!-- 本站运行时间 -->
           <div class="stat-card reveal-item" data-delay="0.4">
             <div class="stat-icon">
-              <img src="@/assets/icon/home-black.svg" width="24px" alt="" />
+              <img src="@/assets/icon/time.svg" width="24px" alt="" />
             </div>
             <div class="stat-content">
               <h3 class="stat-title">本站运行时间</h3>
@@ -92,7 +92,7 @@
           <div class="overview-item reveal-item" data-delay="0.1">
             <div class="overview-icon">
               <img
-                src="@/assets/icon/application-two.svg"
+                src="@/assets/icon/李子.svg"
                 width="24px"
                 alt=""
               />
@@ -104,7 +104,7 @@
           </div>
           <div class="overview-item reveal-item" data-delay="0.2">
             <div class="overview-icon">
-              <img src="@/assets/icon/chart-pie-one.svg" width="24px" alt="" />
+              <img src="@/assets/icon/西瓜.svg" width="24px" alt="" />
             </div>
             <div class="overview-text">
               <h3>用户友好</h3>
@@ -113,7 +113,7 @@
           </div>
           <div class="overview-item reveal-item" data-delay="0.3">
             <div class="overview-icon">
-              <img src="@/assets/icon/home.svg" width="24px" alt="" />
+              <img src="@/assets/icon/香蕉.svg" width="24px" alt="" />
             </div>
             <div class="overview-text">
               <h3>稳定运行</h3>
