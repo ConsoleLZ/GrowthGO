@@ -42,11 +42,7 @@
           @click="visibleDrawer = true"
           aria-label="Menu"
         >
-          <div class="menu-icon">
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-          </div>
+          <img width="26px" src="@/assets/icon/cola.svg" alt="">
         </button>
       </div>
     </header>
@@ -222,7 +218,7 @@ export default {
 }
 
 .logo-image {
-  height: 40px;
+  height: 36px;
   width: auto;
 }
 
