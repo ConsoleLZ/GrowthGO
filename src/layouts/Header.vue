@@ -4,7 +4,11 @@
       <div class="header-content">
         <div class="header-logo">
           <g-link to="/" class="logo-link">
-            <img src="@/assets/images/logo.png" alt="GrowthGO" class="logo-image" />
+            <img
+              src="@/assets/images/logo.png"
+              alt="GrowthGO"
+              class="logo-image"
+            />
           </g-link>
         </div>
         <nav class="header-nav">
@@ -17,24 +21,35 @@
             <span>推荐</span>
           </g-link>
           <g-link to="/category/" class="nav-item">
-            <img src="@/assets/icon/application-two-black.svg" width="18px" alt="" />
+            <img
+              src="@/assets/icon/application-two-black.svg"
+              width="18px"
+              alt=""
+            />
             <span>分类</span>
           </g-link>
           <g-link to="/statistics" class="nav-item">
-            <img src="@/assets/icon/chart-pie-one-black.svg" width="18px" alt="" />
+            <img
+              src="@/assets/icon/chart-pie-one-black.svg"
+              width="18px"
+              alt=""
+            />
             <span>统计</span>
           </g-link>
         </nav>
+        <button
+          class="mobile-menu-btn"
+          @click="visibleDrawer = true"
+          aria-label="Menu"
+        >
+          <div class="menu-icon">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+          </div>
+        </button>
       </div>
     </header>
-    
-    <button class="mobile-menu-btn" @click="visibleDrawer = true" aria-label="Menu">
-      <div class="menu-icon">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </div>
-    </button>
 
     <!-- 移动端适配的导航菜单 -->
     <el-drawer
@@ -134,11 +149,11 @@ export default {
       script.async = true;
 
       script.onload = () => {
-        this.$emit('busuanziLoad', true)
+        this.$emit("busuanziLoad", true);
       };
 
       script.onerror = () => {
-        this.$emit('busuanziLoad', false)
+        this.$emit("busuanziLoad", false);
       };
 
       document.head.appendChild(script);
@@ -146,10 +161,10 @@ export default {
     handleScroll() {
       this.showHeaderBackground = window.scrollY > 10;
     },
-    goLink(url){
+    goLink(url) {
       location.href = url;
       this.visibleDrawer = false;
-    }
+    },
   },
 };
 </script>
@@ -256,9 +271,6 @@ export default {
 
 /* 移动端菜单按钮 */
 .mobile-menu-btn {
-  position: fixed;
-  top: var(--space-4);
-  right: var(--space-4);
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
@@ -342,31 +354,31 @@ export default {
   .header-nav {
     display: none;
   }
-  
+
   .mobile-menu-btn {
     display: flex;
   }
-  
+
   .header-content {
     padding: 0 var(--space-4);
   }
-  
+
   .main-content {
     margin-top: 60px;
   }
-  
+
   .logo-image {
     height: 32px;
   }
-  
+
   .header {
     height: 60px;
   }
-  
+
   .header-scrolled {
     height: 56px;
   }
-  
+
   .header-scrolled + .main-content {
     margin-top: 56px;
   }
@@ -377,11 +389,11 @@ export default {
   .header-nav {
     gap: var(--space-6);
   }
-  
+
   .nav-item {
     font-size: var(--text-xs);
   }
-  
+
   .header-content {
     padding: 0 var(--space-6);
   }
@@ -393,16 +405,16 @@ export default {
     width: 40px;
     height: 40px;
   }
-  
+
   .menu-icon {
     width: 20px;
     height: 16px;
   }
-  
+
   .drawer-content {
     padding: var(--space-6) var(--space-4);
   }
-  
+
   .drawer-menu .el-menu-item {
     height: 48px !important;
     line-height: 48px !important;
